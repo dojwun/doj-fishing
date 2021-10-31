@@ -8,6 +8,7 @@
 - Fish spawn once caught
 - Sell regular fish easily
 - Sell exotic fish with a special card item
+- few extras 
 
 ### Videos
 - Purchase Gear and rent a Boat:
