@@ -11,17 +11,16 @@
 - few extras 
 
 ### Videos
-- Purchase Gear and rent a Boat:
-https://streamable.com/bymhyv
 
-- Reel in Fish:
-https://streamable.com/ml41rw
+**[Purchase Gear and rent a Boat](https://streamable.com/bymhyv)**
 
-- Return boat:
-https://streamable.com/ns3qeb
+**[Reel in Fish](https://streamable.com/ml41rw)**
 
-- Sell fish:
-https://streamable.com/5c8nm0
+**[Return boat](https://streamable.com/ns3qeb)**
+
+**[Purchase Gear and rent a Boat](https://streamable.com/5c8nm0)**
+
+
 
 ### Dependencies:
 **[textUi](https://github.com/dojwun/textUi)**
