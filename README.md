@@ -18,7 +18,7 @@
 
 **[Return boat](https://streamable.com/ns3qeb)**
 
-**[Purchase Gear and rent a Boat](https://streamable.com/5c8nm0)**
+**[Sell Fish](https://streamable.com/5c8nm0)**
 
 
 
