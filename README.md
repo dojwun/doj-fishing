@@ -29,6 +29,8 @@
 
 **[reload-skillbar](https://github.com/Utinax/reload-skillbar)**
 
+**[progressBars](https://drive.google.com/drive/folders/1uuxtWibJIZYx2yDY_7y4mnl5AbqDpSqt?usp=sharing)**
+
 ## Required:
 - qb-core/shared.lua info
 ```
