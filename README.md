@@ -10,7 +10,7 @@
 - Sell exotic fish with a special card item
 - few extras 
 
-### Videos
+## Videos
 
 **[Purchase Gear and rent a Boat](https://streamable.com/bymhyv)**
 
@@ -22,7 +22,7 @@
 
 
 
-### Dependencies:
+## Dependencies:
 **[textUi](https://github.com/dojwun/textUi)**
 
 **[qb-menu](https://github.com/qbcore-framework/qb-menu)**
