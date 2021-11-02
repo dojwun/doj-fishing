@@ -8,10 +8,28 @@ local bait = "none"
 local genderNum = 0
 local peds = {}
 
--- RegisterCommand("fish", function(source)
---     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_FISHING", 0, true)
---     fishing = true
--- end)
+--============================================================== For testing
+
+if Config.TestFish then 
+	RegisterCommand("startfish", function(source)
+		TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_FISHING", 0, true)
+		fishing = true
+	end)
+
+	RegisterCommand('spawnfish', function()
+		local  RandomFish = {     
+			"killerwhale",
+			"dolphin",
+			"sharkhammer",
+			"sharktiger",
+			"none",
+			"stingray",
+			"fish"
+		}
+		local FishBait = RandomFish[math.random(#RandomFish)] 
+		TriggerServerEvent('fishing:server:catch', FishBait) 
+	end, false)
+end
 
 --============================================================== Threads
 Citizen.CreateThread(function()
