@@ -33,7 +33,8 @@ Config.ReturnLocation = {
 	ActDam 		= vector4(1695.805, 43.456, 161.767, 103.579),
 	AlamoSea 	= vector4(1301.1, 4233.696, 33.909, 337.548),        
 }
-Config.PedList = {                                              -- Peds that will be spawned in
+Config.PedList = {                                              -- Peds that will be spawned in (if you change a ped model here you need to also change the ped model in client/addons.lua qb-target exports)
+
 	{
 		model = "s_m_y_ammucity_01",                            -- Boat/Gear Menu
 		coords = vector3(-806.17, -1496.57, 0.6),               
