@@ -31,6 +31,17 @@
 
 **[progressBars](https://drive.google.com/drive/folders/1uuxtWibJIZYx2yDY_7y4mnl5AbqDpSqt?usp=sharing)**
 
+# images
+![rod](https://i.imgur.com/2Btjjcy.png)
+![bait](https://i.imgur.com/A4XBvDb.png)
+![fish](https://i.imgur.com/kye5oAh.png)
+![sting](https://i.imgur.com/KtUf7C6.png)
+![tiger](https://i.imgur.com/L5Zi26u.png)
+![hammer](https://i.imgur.com/SpDnz4O.png)
+![dolphin](https://i.imgur.com/Pisfl7A.png)
+![whale](https://i.imgur.com/iB9Ky68.png)
+
+
 ## Required:
 - qb-core/shared.lua info
 ```
