@@ -3,25 +3,15 @@
 **[Source](https://github.com/Kuzkay/esx_AdvancedFishing)**
 
 ## Info
-- Rent Fishing Boats 
-- Catch 6 diffrent fish
-- Fish spawn once caught
-- Sell regular fish easily
-- Sell exotic fish with a special card item
-- Fish items display species, weight & type in **[tooltip](https://i.imgur.com/vnpIb2b.png)**
+- **[Rent](https://streamable.com/bymhyv)** Fishing Boats
+- **[Return Boat](https://streamable.com/ns3qeb)** for small refund
+- **[Fish](https://streamable.com/ml41rw)** spawn once caught
+- **[Sell](https://streamable.com/5c8nm0)** regular fish easily & exotics no so much 
+- Catch & Sell 6 diffrent fish (2 normal & 4 exotic)
+- Sell exotic fish with a special card item ***(You must choose how a player will recieve this item!)***
+- Fish display species, weight & type in **[tooltip](https://i.imgur.com/vnpIb2b.png)**
 - Few extras 
 - More to come
-
-## Videos
-
-**[Purchase Gear and rent a Boat](https://streamable.com/bymhyv)**
-
-**[Reel in Fish](https://streamable.com/ml41rw)**
-
-**[Return boat](https://streamable.com/ns3qeb)**
-
-**[Sell Fish](https://streamable.com/5c8nm0)**
-
 
 
 ## Dependencies:
