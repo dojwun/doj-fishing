@@ -1,7 +1,7 @@
 function BoatMenuLaPuerta()
     exports['qb-menu']:openMenu({
         {
-            header = "Fishing Boat Rental",
+            header = "La Puerta Boat Rental",
             isMenuHeader = true
         },
         {
@@ -25,7 +25,7 @@ end
 function BoatMenuPaletoCove()
     exports['qb-menu']:openMenu({
         {
-            header = "Fishing Boat Rental",
+            header = "Paleto Cove Boat Rental",
             isMenuHeader = true
         },
         {
@@ -49,7 +49,7 @@ end
 function BoatMenuElGordo()
     exports['qb-menu']:openMenu({
         {
-            header = "Fishing Boat Rental",
+            header = "El Gordo Boat Rental",
             isMenuHeader = true
         },
         {
@@ -74,7 +74,7 @@ end
 function BoatMenuActDam()
     exports['qb-menu']:openMenu({
         {
-            header = "Fishing Boat Rental",
+            header = "Act Dam Boat Rental",
             isMenuHeader = true
         },
         {
@@ -98,7 +98,7 @@ end
 function BoatMenuAlamoSea()
     exports['qb-menu']:openMenu({
         {
-            header = "Fishing Boat Rental",
+            header = "Alamo Sea Boat Rental",
             isMenuHeader = true
         },
         {
@@ -387,14 +387,15 @@ end)
 exports['qb-target']:AddTargetModel(`s_m_y_ammucity_01`, {
     options = {
         {
-            event = "doj:BoatMenuLaPuerta",
+            event = "doj:client:BoatMenu",
             icon = "fas fa-anchor",
-            label = "Boat Menu",
+            label = "Boat Rental",
+            location = 1
         },
 		{
             event = "doj:client:buyFishingGear",
             icon = "fas fa-fish",
-            label = "Buy Fishing Gear",
+            label = "Fishing Gear",
         },
     },
     distance = 10.0
@@ -403,14 +404,15 @@ exports['qb-target']:AddTargetModel(`s_m_y_ammucity_01`, {
 exports['qb-target']:AddTargetModel(`u_m_m_filmdirector`, {
     options = {
         {
-            event = "doj:BoatMenuPaletoCove",
+            event = "doj:client:BoatMenu",
             icon = "fas fa-anchor",
-            label = "Boat Menu",
+            label = "Boat Rental",
+            location = 2
         },
 		{
             event = "doj:client:buyFishingGear",
             icon = "fas fa-fish",
-            label = "Buy Fishing Gear",
+            label = "Fishing Gear",
         },
     },
     distance = 10.0
@@ -419,14 +421,15 @@ exports['qb-target']:AddTargetModel(`u_m_m_filmdirector`, {
 exports['qb-target']:AddTargetModel(`s_m_o_busker_01`, {
     options = {
         {
-            event = "doj:BoatMenuElGordo",
+            event = "doj:client:BoatMenu",
             icon = "fas fa-anchor",
-            label = "Boat Menu",
+            label = "Boat Rental",
+            location = 3
         },
 		{
             event = "doj:client:buyFishingGear",
             icon = "fas fa-fish",
-            label = "Buy Fishing Gear",
+            label = "Fishing Gear",
         },
     },
     distance = 10.0
@@ -435,14 +438,15 @@ exports['qb-target']:AddTargetModel(`s_m_o_busker_01`, {
 exports['qb-target']:AddTargetModel(`ig_cletus`, {
     options = {
         {
-            event = "doj:BoatMenuActDam",
+            event = "doj:client:BoatMenu",
             icon = "fas fa-anchor",
-            label = "Boat Menu",
+            label = "Boat Rental",
+            location = 4
         },
 		{
             event = "doj:client:buyFishingGear",
             icon = "fas fa-fish",
-            label = "Buy Fishing Gear",
+            label = "Fishing Gear",
         },
     },
     distance = 10.0
@@ -451,14 +455,15 @@ exports['qb-target']:AddTargetModel(`ig_cletus`, {
 exports['qb-target']:AddTargetModel(`a_m_m_hillbilly_01`, {
     options = {
         {
-            event = "doj:BoatMenuAlamoSea",
+            event = "doj:client:BoatMenu",
             icon = "fas fa-anchor",
-            label = "Boat Menu",
+            label = "Boat Rental",
+            location = 5
         },
 		{
             event = "doj:client:buyFishingGear",
             icon = "fas fa-fish",
-            label = "Buy Fishing Gear",
+            label = "Fishing Gear",
         },
     },
     distance = 10.0
