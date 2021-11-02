@@ -504,6 +504,36 @@ AddEventHandler('doj:BoatMenuAlamoSea', function()
 	end
 end)
 
+RegisterNetEvent('fishing:client:anchor')
+AddEventHandler('fishing:client:anchor', function()
+    local currVeh = GetVehiclePedIsIn(PlayerPedId(), false)
+    if currVeh ~= 0 then
+        local vehModel = GetEntityModel(currVeh)
+        if vehModel ~= nil and vehModel ~= 0 then
+            if DoesEntityExist(currVeh) then
+                if IsThisModelABoat(vehModel) or IsThisModelAJetski(vehModel) or IsThisModelAnAmphibiousCar(vehModel) or IsThisModelAnAmphibiousQuadbike(vehModel) then
+                    if IsBoatAnchoredAndFrozen(currVeh) then
+                        exports['progressBars']:drawBar(2000,"Retrieving Anchor")
+                        Citizen.Wait(2000)
+						QBCore.Functions.Notify('Anchor Disabled', 'primary')
+                        SetBoatAnchor(currVeh, false)
+                        SetBoatFrozenWhenAnchored(currVeh, false)
+                        SetForcedBoatLocationWhenAnchored(currVeh, false)
+                    elseif not IsBoatAnchoredAndFrozen(currVeh) and CanAnchorBoatHere(currVeh) and GetEntitySpeed(currVeh) < 3 then
+                        SetEntityAsMissionEntity(currVeh,false,true)
+                        exports['progressBars']:drawBar(2000,"Dropping Anchor")
+                        Citizen.Wait(2000)
+						QBCore.Functions.Notify('Anchor Enabled', 'success')
+                        SetBoatAnchor(currVeh, true)
+                        SetBoatFrozenWhenAnchored(currVeh, true)
+                        SetForcedBoatLocationWhenAnchored(currVeh, true)
+                    end
+                end
+            end
+        end
+    end
+end)
+
 --============================================================== Functions
 
 function RequestTheModel(model)
