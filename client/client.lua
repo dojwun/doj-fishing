@@ -251,40 +251,32 @@ RegisterNetEvent('doj:client:ReturnBoat')
 AddEventHandler('doj:client:ReturnBoat', function(args)
 	local ped = PlayerPedId()
 	local args = tonumber(args)
-	if args == 1 then 
-		if IsPedInAnyVehicle(ped) then
+	if IsPedInAnyVehicle(ped) then
+		if args == 1 then 
 			local boat = GetVehiclePedIsIn(ped,true) 
 			QBCore.Functions.DeleteVehicle(boat)
 			SetEntityCoords(ped, Config.ReturnLocation.LaPuerta.x, Config.ReturnLocation.LaPuerta.y, Config.ReturnLocation.LaPuerta.z, 0, 0, 0, false) 
 			SetEntityHeading(ped, Config.ReturnLocation.LaPuerta.w)
 			TriggerServerEvent('fishing:server:returnDeposit')
-		end
-	elseif args == 2 then
-		if IsPedInAnyVehicle(ped) then
+		elseif args == 2 then
 			local boat = GetVehiclePedIsIn(ped,true) 
 			QBCore.Functions.DeleteVehicle(boat)
 			SetEntityCoords(ped, Config.ReturnLocation.PaletoCove.x, Config.ReturnLocation.PaletoCove.y, Config.ReturnLocation.PaletoCove.z, 0, 0, 0, false) 
 			SetEntityHeading(ped, Config.ReturnLocation.PaletoCove.w)
 			TriggerServerEvent('fishing:server:returnDeposit')
-		end
-	elseif args == 3 then
-		if IsPedInAnyVehicle(ped) then
+		elseif args == 3 then
 			local boat = GetVehiclePedIsIn(ped,true) 
 			QBCore.Functions.DeleteVehicle(boat)
 			SetEntityCoords(ped, Config.ReturnLocation.ElGordo.x, Config.ReturnLocation.ElGordo.y, Config.ReturnLocation.ElGordo.z, 0, 0, 0, false) 
 			SetEntityHeading(ped, Config.ReturnLocation.ElGordo.w)
 			TriggerServerEvent('fishing:server:returnDeposit')
-		end
-	elseif args == 3 then
-		if IsPedInAnyVehicle(ped) then
+		elseif args == 3 then
 			local boat = GetVehiclePedIsIn(ped,true) 
 			QBCore.Functions.DeleteVehicle(boat)
 			SetEntityCoords(ped, Config.ReturnLocation.ActDam.x, Config.ReturnLocation.ActDam.y, Config.ReturnLocation.ActDam.z, 0, 0, 0, false) 
 			SetEntityHeading(ped, Config.ReturnLocation.ActDam.w)
 			TriggerServerEvent('fishing:server:returnDeposit')
-		end
-	else
-		if IsPedInAnyVehicle(ped) then
+		else
 			local boat = GetVehiclePedIsIn(ped,true) 
 			QBCore.Functions.DeleteVehicle(boat)
 			SetEntityCoords(ped, Config.ReturnLocation.AlamoSea.x, Config.ReturnLocation.AlamoSea.y, Config.ReturnLocation.AlamoSea.z, 0, 0, 0, false) 
@@ -297,9 +289,9 @@ end)
 RegisterNetEvent('doj:client:rentaBoat')
 AddEventHandler('doj:client:rentaBoat', function(args)
 	local args = tonumber(args)
-	if args == 1 then 
-		QBCore.Functions.TriggerCallback('fishing:server:checkMoney', function(isSuccess)
-			if isSuccess then
+	QBCore.Functions.TriggerCallback('fishing:server:checkMoney', function(isSuccess)
+		if isSuccess then
+			if args == 1 then 
 				QBCore.Functions.SpawnVehicle(Config.RentalBoat, function(boat)
 					SetVehicleNumberPlateText(boat, "Rent-a-Boat")
 					exports['LegacyFuel']:SetFuel(boat, 100.0)
@@ -308,11 +300,7 @@ AddEventHandler('doj:client:rentaBoat', function(args)
 					TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(boat))
 					SetVehicleEngineOn(boat, true, true)
 				end, Config.SpawnLocation.LaPuerta, true) 
-			end
-		end)
-    elseif args == 2 then 
-		QBCore.Functions.TriggerCallback('fishing:server:checkMoney', function(isSuccess)
-			if isSuccess then
+			elseif args == 2 then 
 				QBCore.Functions.SpawnVehicle(Config.RentalBoat, function(boat)
 					SetVehicleNumberPlateText(boat, "Rent-a-Boat")
 					exports['LegacyFuel']:SetFuel(boat, 100.0)
@@ -321,11 +309,7 @@ AddEventHandler('doj:client:rentaBoat', function(args)
 					TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(boat))
 					SetVehicleEngineOn(boat, true, true)
 				end, Config.SpawnLocation.PaletoCove, true) 
-			end
-		end)
-	elseif args == 3 then 
-		QBCore.Functions.TriggerCallback('fishing:server:checkMoney', function(isSuccess)
-			if isSuccess then
+			elseif args == 3 then 
 				QBCore.Functions.SpawnVehicle(Config.RentalBoat, function(boat)
 					SetVehicleNumberPlateText(boat, "Rent-a-Boat")
 					exports['LegacyFuel']:SetFuel(boat, 100.0)
@@ -334,11 +318,7 @@ AddEventHandler('doj:client:rentaBoat', function(args)
 					TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(boat))
 					SetVehicleEngineOn(boat, true, true)
 				end, Config.SpawnLocation.ElGordo, true) 
-			end
-		end)
-	elseif args == 3 then
-		QBCore.Functions.TriggerCallback('fishing:server:checkMoney', function(isSuccess)
-			if isSuccess then
+			elseif args == 3 then
 				QBCore.Functions.SpawnVehicle(Config.RentalBoat, function(boat)
 					SetVehicleNumberPlateText(boat, "Rent-a-Boat")
 					exports['LegacyFuel']:SetFuel(boat, 100.0)
@@ -347,11 +327,7 @@ AddEventHandler('doj:client:rentaBoat', function(args)
 					TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(boat))
 					SetVehicleEngineOn(boat, true, true)
 				end, Config.SpawnLocation.ActDam, true) 
-			end
-		end)
-	else
-		QBCore.Functions.TriggerCallback('fishing:server:checkMoney', function(isSuccess)
-			if isSuccess then
+			else
 				QBCore.Functions.SpawnVehicle(Config.RentalBoat, function(boat)
 					SetVehicleNumberPlateText(boat, "Rent-a-Boat")
 					exports['LegacyFuel']:SetFuel(boat, 100.0)
@@ -360,9 +336,9 @@ AddEventHandler('doj:client:rentaBoat', function(args)
 					TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(boat))
 					SetVehicleEngineOn(boat, true, true)
 				end, Config.SpawnLocation.AlamoSea, true) 
-			end
-		end)
-    end  
+			end  
+		end
+	end)
 end)
 
 RegisterNetEvent('doj:BoatMenuLaPuerta')
