@@ -7,6 +7,7 @@ Config.StopFishing =  73                                        -- Stop Fishing 
 Config.BoatPrice = 100                                          -- Price of the boat rental, price is divided when boat is returned
 Config.PedDistance = 60.0                                       -- Distance of ped spawning
 Config.PearlsExoticCard = "pearlscard"                          -- Name of item to sell exotic/illegal fish
+Config.TestFish = false						-- Test Fish with commands /startfish & /spawnfish
 
 Config.fishingRodPrice = 50                                     -- Price of a fishing rod
 Config.fishingBaitPrice = 5                                     -- Price of fishing bait
