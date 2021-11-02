@@ -5,7 +5,7 @@
 ## Info
 - **[Rent](https://streamable.com/bymhyv)** a fishing boat
 - **[Return](https://streamable.com/ns3qeb)** boat for small refund
-- **[Fish](https://streamable.com/ml41rw)** spawn once caught
+- **[Fish](https://streamable.com/ca7wo7)** spawn once caught **Updated Anim* 
 - **[Sell](https://streamable.com/5c8nm0)** regular fish easily & exotics no so much 
 - **[Purchase](https://i.imgur.com/bwscYuB.png)** fishing gear to start your trip 
 - Catch & Sell 6 diffrent fish (2 normal & 4 exotic)
