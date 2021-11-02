@@ -341,118 +341,100 @@ AddEventHandler('doj:client:rentaBoat', function(args)
 	end)
 end)
 
-RegisterNetEvent('doj:BoatMenuLaPuerta')
-AddEventHandler('doj:BoatMenuLaPuerta', function()
+RegisterNetEvent('doj:client:BoatMenu')
+AddEventHandler('doj:client:BoatMenu', function(data)
 	local ped = PlayerPedId()
     local inVehicle = IsPedInAnyVehicle(ped)
-	if Config.Fish24hours then
-		if inVehicle then
-			ReturnBoatLaPuerta()
-		else
-			BoatMenuLaPuerta()
-		end
-	else
-		if GetClockHours() >= 6 and GetClockHours() <= 21 then
-			if inVehicle then
-				ReturnBoatLaPuerta()
-			else
-				BoatMenuLaPuerta()
-			end
-		else
-			QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
-		end
-	end
-end)
-
-RegisterNetEvent('doj:BoatMenuPaletoCove')
-AddEventHandler('doj:BoatMenuPaletoCove', function()
-	local ped = PlayerPedId()
-    local inVehicle = IsPedInAnyVehicle(ped)
-	if Config.Fish24hours then
-		if inVehicle then
-			ReturnBoatPaletoCove()
-		else
-			BoatMenuPaletoCove()
-		end
-	else
-		if GetClockHours() >= 6 and GetClockHours() <= 21 then
-			if inVehicle then
-				ReturnBoatPaletoCove()
-			else
-				BoatMenuPaletoCove()
-			end
-		else
-			QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
-		end
-	end
-end)
-
-RegisterNetEvent('doj:BoatMenuElGordo')
-AddEventHandler('doj:BoatMenuElGordo', function()
-	local ped = PlayerPedId()
-    local inVehicle = IsPedInAnyVehicle(ped)
-	if Config.Fish24hours then
-		if inVehicle then
-			ReturnBoatElGordo()
-		else
-			BoatMenuElGordo()
-		end
-	else
-		if GetClockHours() >= 6 and GetClockHours() <= 21 then
-			if inVehicle then
-				ReturnBoatElGordo()
-			else
-				BoatMenuElGordo()
-			end
-		else
-			QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
-		end
-	end
-end)
-
-RegisterNetEvent('doj:BoatMenuActDam')
-AddEventHandler('doj:BoatMenuActDam', function()
-	local ped = PlayerPedId()
-    local inVehicle = IsPedInAnyVehicle(ped)
-	if Config.Fish24hours then
-		if inVehicle then
-			ReturnBoatActDam()
-		else
-			BoatMenuActDam()
-		end
-	else
-		if GetClockHours() >= 6 and GetClockHours() <= 21 then
+	if data.location == 1 then 
+        if Config.Fish24hours then
+            if inVehicle then
+                ReturnBoatLaPuerta()
+            else
+                BoatMenuLaPuerta()
+            end
+        else
+            if GetClockHours() >= 6 and GetClockHours() <= 21 then
+                if inVehicle then
+                    ReturnBoatLaPuerta()
+                else
+                    BoatMenuLaPuerta()
+                end
+            else
+                QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
+            end
+        end
+	elseif data.location == 2 then
+        if Config.Fish24hours then
+            if inVehicle then
+                ReturnBoatPaletoCove()
+            else
+                BoatMenuPaletoCove()
+            end
+        else
+            if GetClockHours() >= 6 and GetClockHours() <= 21 then
+                if inVehicle then
+                    ReturnBoatPaletoCove()
+                else
+                    BoatMenuPaletoCove()
+                end
+            else
+                QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
+            end
+        end
+    elseif data.location == 3 then
+        if Config.Fish24hours then
+            if inVehicle then
+                ReturnBoatElGordo()
+            else
+                BoatMenuElGordo()
+            end
+        else
+            if GetClockHours() >= 6 and GetClockHours() <= 21 then
+                if inVehicle then
+                    ReturnBoatElGordo()
+                else
+                    BoatMenuElGordo()
+                end
+            else
+                QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
+            end
+        end
+    elseif data.location == 4 then
+		if Config.Fish24hours then
 			if inVehicle then
 				ReturnBoatActDam()
 			else
 				BoatMenuActDam()
 			end
 		else
-			QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
-		end
-	end
-end)
-
-RegisterNetEvent('doj:BoatMenuAlamoSea')
-AddEventHandler('doj:BoatMenuAlamoSea', function()
-	local ped = PlayerPedId()
-    local inVehicle = IsPedInAnyVehicle(ped)
-	if Config.Fish24hours then
-		if inVehicle then
-			ReturnBoatAlamoSea()
-		else
-			BoatMenuAlamoSea()
+			if GetClockHours() >= 6 and GetClockHours() <= 21 then
+				if inVehicle then
+					ReturnBoatActDam()
+				else
+					BoatMenuActDam()
+				end
+			else
+				QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
+			end
 		end
 	else
-		if GetClockHours() >= 6 and GetClockHours() <= 21 then
-			if inVehicle then
-				ReturnBoatAlamoSea()
-			else
-				BoatMenuAlamoSea()
-			end
-		else
-			QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
-		end
+        if Config.Fish24hours then
+            if inVehicle then
+                ReturnBoatAlamoSea()
+            else
+                BoatMenuAlamoSea()
+            end
+        else
+            if GetClockHours() >= 6 and GetClockHours() <= 21 then
+                if inVehicle then
+                    ReturnBoatAlamoSea()
+                else
+                    BoatMenuAlamoSea()
+                end
+            else
+                QBCore.Functions.Notify('Too Late to Fish!, Opened from 6:00am / 21:00pm', 'error')
+            end
+        end
 	end
 end)
 
