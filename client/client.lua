@@ -12,8 +12,7 @@ local peds = {}
 
 if Config.TestFish then 
 	RegisterCommand("startfish", function(source)
-		TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_FISHING", 0, true)
-		fishing = true
+		TriggerEvent("fishing:fishstart")
 	end)
 
 	RegisterCommand('spawnfish', function()
@@ -49,14 +48,8 @@ Citizen.CreateThread(function()
 					input = 1
 			   	end
 
-			if IsPedUsingScenario(PlayerPedId(), "WORLD_HUMAN_STAND_FISHING") then
-				BlockWeaponWheelThisFrame()
-			end
-			
 			if IsControlJustReleased(0, Config.StopFishing) then
-				fishing = false
-				QBCore.Functions.Notify('You Stopped Fishing', 'error')
-				TriggerEvent("fishing:break")
+				endFishing()
 			end
 
 			if fishing then
@@ -64,13 +57,10 @@ Citizen.CreateThread(function()
 				local pos = GetEntityCoords(playerPed)
 				if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0)  then
 				else
-					fishing = false
-					QBCore.Functions.Notify('You Stopped Fishing', 'error')
-					exports['textUi']:DrawTextUi('hide')
+					endFishing()
 				end
 				if IsEntityDead(playerPed) or IsEntityInWater(playerPed) then
-					QBCore.Functions.Notify('You Stopped Fishing', 'error')
-					exports['textUi']:DrawTextUi('hide')
+					endFishing()
 				end
 			end
 			
@@ -148,23 +138,10 @@ AddEventHandler('fishing:SkillBar', function(message)
 			if finished3 ~= 100 then
 				QBCore.Functions.Notify('The Fish Got Away!', 'error')
 			else
-				local time = 1750
-				exports['progressBars']:drawBar(time, 'Fish Caught!')
-				Citizen.Wait(time)
-				TriggerServerEvent('fishing:server:catch', bait) 
-				if math.random(1, 100) < 50 then
-					TriggerServerEvent('hud:server:RelieveStress', 50)
-				end
-				PlaySoundFrontend(-1, "OK", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+				catchAnimation()
 			end
         end
     end
-end)
-
-RegisterNetEvent('fishing:break')
-AddEventHandler('fishing:break', function()
-	fishing = false
-	ClearPedTasks(PlayerPedId())
 end)
 
 RegisterNetEvent('sharktiger:spawnFish')
@@ -261,10 +238,9 @@ AddEventHandler('fishing:fishstart', function()
 			exports['progressBars']:drawBar(time, 'Using Fishing Rod')
 			Citizen.Wait(time)
 			exports['textUi']:DrawTextUi('show', "Press [X] to stop fishing at any time")
-			TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_FISHING", 0, true)
-			fishing = true
-			Citizen.Wait(3700)
-			exports['textUi']:DrawTextUi('hide')
+			-- TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_FISHING", 0, true)
+			-- fishing = true
+			fishAnimation()
 		else
 			QBCore.Functions.Notify('You need to go further away from the shore', 'error')
 		end
@@ -536,14 +512,14 @@ end)
 
 --============================================================== Functions
 
-function RequestTheModel(model)
+RequestTheModel = function(model)
 	RequestModel(model)
 	while not HasModelLoaded(model) do
 		Citizen.Wait(0)
 	end
 end
 
-function nearPed(model, coords, heading, gender, animDict, animName, scenario)
+nearPed = function(model, coords, heading, gender, animDict, animName, scenario)
 	RequestModel(GetHashKey(model))
 	while not HasModelLoaded(GetHashKey(model)) do
 		Citizen.Wait(1)
@@ -579,4 +555,64 @@ function nearPed(model, coords, heading, gender, animDict, animName, scenario)
 	end
 	
 	return ped
+end
+
+catchAnimation = function()
+	local ped = PlayerPedId()
+	local animDict = "mini@tennis"
+	local animName = "forehand_ts_md_far"
+	DeleteEntity(rodHandle)
+	RequestAnimDict(animDict)
+	while not HasAnimDictLoaded(animDict) do
+		Citizen.Wait(100)
+	end
+	TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 0, 0, 0, 48, 0)
+
+	local time = 1750
+	exports['progressBars']:drawBar(time, 'Fish Caught!')
+	Citizen.Wait(time)
+	TriggerServerEvent('fishing:server:catch', bait) 
+	if math.random(1, 100) < 50 then
+		TriggerServerEvent('hud:server:RelieveStress', 50)
+	end
+	PlaySoundFrontend(-1, "OK", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+	RemoveAnimDict(animDict)
+	fishAnimation()
+end
+
+fishAnimation = function()
+	local ped = PlayerPedId()
+	local animDict = "amb@world_human_stand_fishing@idle_a"
+	local animName = "idle_c"
+	RequestAnimDict(animDict)
+	while not HasAnimDictLoaded(animDict) do
+		Citizen.Wait(100)
+	end
+	TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
+	fishing = true
+	Citizen.Wait(3700)
+	exports['textUi']:DrawTextUi('hide')
+	fishingRodEntity()
+	-- RemoveAnimDict(animDict)
+end
+
+fishingRodEntity = function()
+	local ped = PlayerPedId()
+    local pedPos = GetEntityCoords(ped)
+	local fishingRodHash = `prop_fishing_rod_01`
+	local bone = GetPedBoneIndex(ped, 18905)
+    rodHandle = CreateObject(fishingRodHash, pedPos, true)
+    AttachEntityToEntity(rodHandle, ped, bone, 0.1, 0.05, 0, 80.0, 120.0, 160.0, true, true, false, true, 1, true)
+end
+
+endFishing = function() 
+	local ped = PlayerPedId()
+    if rodHandle ~= 0 then
+		DeleteObject(rodHandle)
+		ClearPedTasks(ped)
+		fishing = false
+		rodHandle = 0
+		QBCore.Functions.Notify('You Stopped Fishing', 'error')
+		exports['textUi']:DrawTextUi('hide')
+    end
 end
