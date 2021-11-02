@@ -11,6 +11,7 @@ Config.TestFish = false											-- Test Fish with commands /startfish or /spaw
 
 Config.fishingRodPrice = 50                                     -- Price of a fishing rod
 Config.fishingBaitPrice = 5                                     -- Price of fishing bait
+Config.BoatAnchorPrice = 500                                    -- Price of a Boat Anchor
 Config.fishPrice         = 35                                   -- Price of Normal Fish
 Config.stingrayPrice     = 50                                   -- Price of Stingrays
 Config.dolphinPrice      = 100                                  -- Price of Dolphins
