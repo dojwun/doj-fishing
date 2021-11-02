@@ -249,24 +249,51 @@ AddEventHandler('doj:client:SellLegalFish', function()
             header = "Pearl's Seafood Restaurant",
             isMenuHeader = true
         },
-		{
-            header = "Sell Fish",
-            txt = "Current Price: $"..Config.fishPrice.." each",
+        {
+            header = "Sell Mackerel",
+            txt = "Current Price: $"..Config.mackerelPrice.." each",
             params = {
 				isServer = true,
                 event = "fishing:server:SellLegalFish",
 				args = 1
             }
         },
-		{
-            header = "Sell Stingrays",
-            txt = "Current Price: $"..Config.stingrayPrice.." each",
+        {
+            header = "Sell Codfish",
+            txt = "Current Price: $"..Config.codfishPrice.." each",
             params = {
 				isServer = true,
                 event = "fishing:server:SellLegalFish",
 				args = 2
             }
         },
+		{
+            header = "Sell Bass",
+            txt = "Current Price: $"..Config.bassPrice.." each",
+            params = {
+				isServer = true,
+                event = "fishing:server:SellLegalFish",
+				args = 3 
+            }
+        },
+        {
+            header = "Sell Flounder",
+            txt = "Current Price: $"..Config.flounderPrice.." each",
+            params = {
+				isServer = true,
+                event = "fishing:server:SellLegalFish",
+				args = 4
+            }
+        },
+		{
+            header = "Sell Stingray",
+            txt = "Current Price: $"..Config.stingrayPrice.." each",
+            params = {
+				isServer = true,
+                event = "fishing:server:SellLegalFish",
+				args = 5
+            }
+        },		
         {
             header = "Close",
             txt = "",
@@ -360,7 +387,7 @@ AddEventHandler('doj:client:SellillegalFish', function()
 					}
 				},
 				{
-					header = "Sell Killer Whale",
+					header = "Sell Orca",
 					txt = "Current Price: $"..Config.killerwhalePrice.." each",
 					params = {
 						isServer = true,
@@ -381,4 +408,3 @@ AddEventHandler('doj:client:SellillegalFish', function()
 		end
 	end, Config.PearlsExoticCard)
 end)
-
