@@ -1,4 +1,6 @@
-# Fishing Script for QB
+# Fishing Script for QB 
+
+### ***Frequently Updated! Check back for more!***
 
 **[Source](https://github.com/Kuzkay/esx_AdvancedFishing)**
 
