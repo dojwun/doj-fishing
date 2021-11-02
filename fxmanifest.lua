@@ -1,10 +1,10 @@
 fx_version 'adamant'
 games { 'gta5' }
 
-client_script 'client/client.lua'
+client_script 'client/*.lua'
 
 
-server_script 'server/server.lua'
+server_script 'server/*.lua'
 
 
 shared_scripts { 
