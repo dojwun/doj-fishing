@@ -8,7 +8,9 @@
 - Fish spawn once caught
 - Sell regular fish easily
 - Sell exotic fish with a special card item
-- few extras 
+- Fish items display species, weight & type in **[tooltip](https://i.imgur.com/vnpIb2b.png)**
+- Few extras 
+- More to come
 
 ## Videos
 
