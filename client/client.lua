@@ -589,10 +589,10 @@ fishAnimation = function()
 		Citizen.Wait(100)
 	end
 	TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
+	fishingRodEntity()
 	fishing = true
 	Citizen.Wait(3700)
 	exports['textUi']:DrawTextUi('hide')
-	fishingRodEntity()
 	-- RemoveAnimDict(animDict)
 end
 
