@@ -32,6 +32,7 @@
 ![hammer](https://i.imgur.com/SpDnz4O.png)
 ![dolphin](https://i.imgur.com/Pisfl7A.png)
 ![whale](https://i.imgur.com/iB9Ky68.png)
+![anchor](https://i.imgur.com/1OYiDYa.png)
 
 
 ## Required:
