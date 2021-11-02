@@ -303,6 +303,15 @@ AddEventHandler('doj:client:buyFishingGear', function()
             }
         },
         {
+            header = "Buy Boat Anchor",
+            txt = "$"..Config.BoatAnchorPrice,
+            params = {
+				isServer = true,
+                event = "fishing:server:BuyFishingGear",
+				args = 3
+            }
+        },
+        {
             header = "Close",
             txt = "",
             params = {
