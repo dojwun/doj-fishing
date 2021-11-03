@@ -193,8 +193,8 @@ end)
 
 RegisterNetEvent('fishing:client:useFishingBox')
 AddEventHandler('fishing:client:useFishingBox', function(BoxId)
-	TriggerServerEvent("inventory:server:OpenInventory", "stash", 'FishingBox-'..BoxId, {maxweight = 18000000, slots = 250})
-	TriggerEvent("inventory:client:SetCurrentStash", 'FishingBox-'..BoxId) 
+	TriggerServerEvent("inventory:server:OpenInventory", "stash", 'FishingBox_'..BoxId, {maxweight = 18000000, slots = 250})
+	TriggerEvent("inventory:client:SetCurrentStash", 'FishingBox_'..BoxId) 
 end) 
 
 RegisterNetEvent('fishing:fishstart')
