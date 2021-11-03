@@ -30,12 +30,13 @@ Config.PlayerReturnLocation = {
 Config.fishingRodPrice = 50                                     -- Price of a fishing rod
 Config.fishingBaitPrice = 5                                     -- Price of fishing bait
 Config.BoatAnchorPrice = 500                                    -- Price of a Boat Anchor
+Config.FishingBoxPrice = 1000                                   -- Price of a Fishing Ice Box
 
 -- Regular Fish
-Config.mackerelPrice     = 5                                    -- Price of Stingrays
-Config.codfishPrice      = 15                                   -- Price of Stingrays
+Config.mackerelPrice     = 5                                    -- Price of Mackerel
+Config.codfishPrice      = 15                                   -- Price of Cod
 Config.bassPrice         = 35                                   -- Price of Normal Fish
-Config.flounderPrice     = 40                                   -- Price of Stingrays
+Config.flounderPrice     = 40                                   -- Price of Flounder
 Config.stingrayPrice     = 50                                   -- Price of Stingrays
 
 -- Exotic Fish
