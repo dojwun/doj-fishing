@@ -11,10 +11,15 @@
 - **[Sell](https://streamable.com/5c8nm0)** regular fish easily & exotics no so much 
 - **[Purchase](https://i.imgur.com/LIj0Rs8.png)** fishing gear to start your trip 
 - **[Store](https://i.imgur.com/eeQrnD0.png)** fish you have caught
--  **[Inventory Tooltip](https://i.imgur.com/vnpIb2b.png)** will display species, weight & type
-- Catch & Sell 9 diffrent fish (5 normal & 4 exotic) + 2 Extra Trash items
-- Sell exotic fish with a special card item ***(You must choose how a player will recieve this item!)***
-- Few extras & More to come ***Stay Tuned***
+- **[Inventory Tooltip](https://i.imgur.com/vnpIb2b.png)** will display species, weight & type
+ 
+- Catch & Sell 13 diffrent items (5 fish, 4 exotic, 2 Trash, 2 Rewards)
+- Chance to find a **[Tackle Box](https://i.imgur.com/DmYYb30.png)** when returning a boat
+- **[Tackle Box](https://i.imgur.com/DmYYb30.png)** contains a **[Pearls Seafood Card](https://i.imgur.com/xFEmoLt.png)** required to sell exotic fish
+- Chance to catch a **[Tackle Box](https://i.imgur.com/fGsqgZQ.png)** while fishing
+- **[Tackle Box](https://i.imgur.com/fGsqgZQ.png)** contains a **[Corroded Key](https://i.imgur.com/Pyg81vH.png)** that is needed to open a **[Treasure Chest](https://i.imgur.com/TcCevdc.png)**
+
+
 
 
 # Dependencies
@@ -55,10 +60,15 @@
 ![rod](https://i.imgur.com/dzM4b7U.png)
 ![bait](https://i.imgur.com/A4XBvDb.png)
 ![anchor](https://i.imgur.com/1OYiDYa.png)
-![pearlscard](https://i.imgur.com/xFEmoLt.png)
 ![fishingicebox](https://i.imgur.com/YnJzonA.png)
 
-
+- **Rewards**
+ 
+![tacklebox](https://i.imgur.com/DmYYb30.png)
+![key](https://i.imgur.com/Pyg81vH.png)
+![smallloot](https://i.imgur.com/fGsqgZQ.png)
+![bigloot](https://i.imgur.com/TcCevdc.png)
+![pearlscard](https://i.imgur.com/xFEmoLt.png)
 
 # Required
 - qb-core/shared.lua info
@@ -83,9 +93,15 @@
 	-- Gear
 	['fishbait'] 			     	 = {['name'] = 'fishbait', 					['label'] = 'Fish Bait', 				['weight'] = 400, 		['type'] = 'item', 		['image'] = 'fishbait.png', 			['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Fishing bait'},
 	['fishingrod'] 			 		 = {['name'] = 'fishingrod', 				['label'] = 'Fishing Rod', 				['weight'] = 750, 		['type'] = 'item', 		['image'] = 'fishingrod.png', 			['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A fishing rod for adventures with friends!!'},	
-	['pearlscard'] 			 	 	 = {['name'] = 'pearlscard', 				['label'] = 'Pearls Exotic Card', 		['weight'] = 100, 		['type'] = 'item', 		['image'] = 'pearlscard.png', 			['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A special card to sell exotic goods at Pearl\'s Seafood Restaurant'},	
 	['anchor'] 			 	 		 = {['name'] = 'anchor', 					['label'] = 'Boat Anchor', 				['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'anchor.png', 				['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Boat Anchor'},	
 	['fishicebox'] 			 	 	 = {['name'] = 'fishicebox', 				['label'] = 'Fishing Ice Chest', 		['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'fishicebox.png', 			['unique'] = true,     ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Ice Box to store all of your fish'},	
+	
+	-- Rewards
+	['fishingloot'] 			 	 = {['name'] = 'fishingloot', 				['label'] = 'Metal Box', 				['weight'] = 500, 		['type'] = 'item', 		['image'] = 'fishingloot.png', 			['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Seems to be a corroded from the salt water, Should be easy to open'},	
+	['fishinglootbig'] 			 	 = {['name'] = 'fishinglootbig', 			['label'] = 'Treasure Chest', 			['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'fishinglootbig.png', 		['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'The lock seems to be intact, Might need a key'},	
+	['fishingkey'] 			 	 	 = {['name'] = 'fishingkey', 			    ['label'] = 'Corroded Key', 			['weight'] = 100, 		['type'] = 'item', 		['image'] = 'fishingkey.png', 		    ['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A weathered key that looks usefull'},	
+	['fishtacklebox'] 			 	 = {['name'] = 'fishtacklebox', 			['label'] = 'Tackle Box', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'fishtacklebox.png', 		['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Seems to be left over tackle box from another fisherman'},	
+	['pearlscard'] 			 	 	 = {['name'] = 'pearlscard', 				['label'] = 'Pearls Seafood', 			['weight'] = 100, 		['type'] = 'item', 		['image'] = 'pearlscard.png', 			['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A special member of Pearl\'s Seafood Restaurant'},	
 
  ``` 
 
