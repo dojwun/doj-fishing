@@ -99,7 +99,7 @@ AddEventHandler('fishing:server:catch', function()
 				end
 			elseif luck >= 70 and luck <= 75 then
 				-- if TriggerClientEvent('fish:spawnFish', src) then
-					Player.Functions.AddItem('fishingboot', 1, nil, info, {["quality"] = 100})
+					Player.Functions.AddItem('fishingboot', 1, nil, {["quality"] = 100})
 					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishingboot'], "add", 1)
 					TriggerClientEvent('QBCore:Notify', src, "You caught a fishing boot!", "primary")
 				-- end
@@ -121,7 +121,7 @@ AddEventHandler('fishing:server:catch', function()
 				end
 			elseif luck >= 55 and luck <= 60 then
 				-- if TriggerClientEvent('fish:spawnFish', src) then
-					Player.Functions.AddItem('fishingtin', 1, nil, info, {["quality"] = 100})
+					Player.Functions.AddItem('fishingtin', 1, nil, {["quality"] = 100})
 					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishingtin'], "add", 1)
 					TriggerClientEvent('QBCore:Notify', src, "You caught a fishing tin!", "primary")
 				-- end
@@ -271,19 +271,19 @@ AddEventHandler('fishing:server:BuyFishingGear', function(args)
 	local bankBalance = Player.PlayerData.money["bank"]
 
 	if args == 1 then 
-		if bankBalance >= Config.fishingRodPrice then
-			Player.Functions.RemoveMoney('bank', Config.fishingRodPrice, "fishingrod")
-			Player.Functions.AddItem('fishingrod', 1, nil, {["quality"] = 100})
-			TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishingrod'], "add", 1)
+		if bankBalance >= Config.fishingBaitPrice then
+			Player.Functions.RemoveMoney('bank', Config.fishingBaitPrice, "fishbait")
+			Player.Functions.AddItem('fishbait', 1, nil, {["quality"] = 100})
+			TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishbait'], "add", 1)
 			TriggerClientEvent("doj:client:buyFishingGear", source)
 		else
 			TriggerClientEvent('QBCore:Notify', src, "You dont have enough money..", "error")
 		end
 	elseif args == 2 then 
-		if bankBalance >= Config.fishingBaitPrice then
-			Player.Functions.RemoveMoney('bank', Config.fishingBaitPrice, "fishbait")
-			Player.Functions.AddItem('fishbait', 1, nil, {["quality"] = 100})
-			TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishbait'], "add", 1)
+		if bankBalance >= Config.fishingRodPrice then
+			Player.Functions.RemoveMoney('bank', Config.fishingRodPrice, "fishingrod")
+			Player.Functions.AddItem('fishingrod', 1, nil, {["quality"] = 100})
+			TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishingrod'], "add", 1)
 			TriggerClientEvent("doj:client:buyFishingGear", source)
 		else
 			TriggerClientEvent('QBCore:Notify', src, "You dont have enough money..", "error")
