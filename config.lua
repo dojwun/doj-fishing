@@ -5,8 +5,6 @@ Config.FishingWaitTime = {minTime = 21000, maxTime = 45000}     -- How long a pl
 Config.RentalBoat = "dinghy"                                    -- Fishing boat of Choice
 Config.StopFishing =  73                                        -- Stop Fishing Key [X]
 Config.BoatPrice = 100                                          -- Price of the boat rental, price is divided when boat is returned
-Config.PedDistance = 60.0                                       -- Distance of ped spawning
-Config.PearlsExoticCard = "pearlscard"                          -- Name of item to sell exotic/illegal fish
 Config.TestFish = true											-- Test Fish with commands /startfish or /spawnfish
 
 Config.PearlsSellsBlip = vector3(-1816.406, -1193.334, 13.305)  -- Blip for Fish Sells
