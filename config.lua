@@ -44,3 +44,16 @@ Config.dolphinPrice      = 100                                  -- Price of Dolp
 Config.sharktigerPrice   = 200                                  -- Price of Tigersharks
 Config.sharkhammerPrice  = 200                                  -- Price of Hammerhead Sharks
 Config.killerwhalePrice  = 500                                  -- Price of Killer whales
+
+-- Rewards
+Config.smallLootboxCash = 100                                  	-- Price of the cash reward for the "Metal Box"
+Config.smallLootboxReward = 'diamond_ring'                      -- Item reward besides the "Corroded Key"
+
+Config.largeLootboxRewards = {
+    [1] = { name = "water", price = 0, amount = 1, info = {}, type = "item", slot = 1, },
+	[2] = { name = "water", price = 0, amount = 1, info = {}, type = "item", slot = 2, },
+    [3] = { name = "water", price = 0, amount = 1, info = {}, type = "item", slot = 3, },
+    [4] = { name = "water", price = 0, amount = 1, info = {}, type = "item", slot = 4, },
+    [5] = { name = "water", price = 0, amount = 1, info = {}, type = "item", slot = 5, },
+
+}
