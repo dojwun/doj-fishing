@@ -17,7 +17,7 @@
 - Chance to find a **[Tackle Box](https://streamable.com/4e1kte)** left over from another fisherman when purchasing a boat
 - ***Tackle Box*** contains a **[Pearls Seafood Card](https://i.imgur.com/xFEmoLt.png)** required to sell exotic fish
 - Chance to catch a ***Small Loot Box*** & ***Treasure Chest*** while fishing
-- **[Small Loot Box](https://streamable.com/4ff2ht)** contains a **[Corroded Key](https://i.imgur.com/Pyg81vH.png)** that is needed to open a **[Treasure Chest](https://streamable.com/4ff2ht)**
+- **[Small Loot Box](https://streamable.com/4ff2ht)** contains a **[Corroded Key](https://i.imgur.com/Pyg81vH.png)** that is needed to open a **[Treasure Chest](https://i.imgur.com/dIKE1rw.png)**
 
 
 
