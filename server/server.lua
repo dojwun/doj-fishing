@@ -48,7 +48,6 @@ AddEventHandler('fishing:server:catch', function()
 				local weight = math.random(850,1000)
 				local info = {species = "Orca",lbs = weight,type = "Exotic"}
 				if TriggerClientEvent('killerwhale:spawnFish', src) then
-					TriggerClientEvent('fishing:setbait', src, "none")
 					Player.Functions.AddItem('killerwhale', 1, nil, info, {["quality"] = 100})
 					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['killerwhale'], "add", 1)
 					TriggerClientEvent('QBCore:Notify', src, "You caught a killer whale!\nThese are endangered species and are illegal to possess", "primary")
@@ -57,7 +56,6 @@ AddEventHandler('fishing:server:catch', function()
 				local weight = math.random(10,28)
 				local info = {species = "Bottlenose",lbs = weight, type = "Exotic"}
 				if TriggerClientEvent('dolphin:spawnFish', src) then
-					TriggerClientEvent('fishing:setbait', src, "none")
 					Player.Functions.AddItem('dolphin', 1, nil, info, {["quality"] = 100})
 					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['dolphin'], "add", 1)
 					TriggerClientEvent('QBCore:Notify', src, "You caught a dolphin!\nThese are endangered species and are illegal to possess", "primary")
@@ -66,7 +64,6 @@ AddEventHandler('fishing:server:catch', function()
 				local weight = math.random(20,30)
 				local info = {species = "Hammerhead Shark", lbs = weight, type = "Exotic"}
 				if TriggerClientEvent('sharkhammer:spawnFish', src) then
-					TriggerClientEvent('fishing:setbait', src, "none")
 					Player.Functions.AddItem('sharkhammer', 1, nil, info, {["quality"] = 100})
 					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['sharkhammer'], "add", 1)
 					TriggerClientEvent('QBCore:Notify', src, "You caught a hammerhead shark!\nThese are endangered species and are illegal to possess", "primary")
@@ -75,7 +72,6 @@ AddEventHandler('fishing:server:catch', function()
 				local weight = math.random(1,6)
 				local info = {species = "Tiger Shark", lbs = weight, type = "Exotic"}
 				if TriggerClientEvent('sharktiger:spawnFish', src) then
-					TriggerClientEvent('fishing:setbait', src, "none")
 					Player.Functions.AddItem('sharktiger', 1, nil, info, {["quality"] = 100})
 					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['sharktiger'], "add", 1)
 					TriggerClientEvent('QBCore:Notify', src, "You caught a tiger shark!\nThese are endangered species and are illegal to possess", "primary")
@@ -84,7 +80,6 @@ AddEventHandler('fishing:server:catch', function()
 				local weight = math.random(4,9)
 				local info = {species = "Manta ray", lbs = weight, type = "Normal"}
 				if TriggerClientEvent('stingray:spawnFish', src) then
-					TriggerClientEvent('fishing:setbait', src, "none")
 					Player.Functions.AddItem('stingray', 1, nil, info, {["quality"] = 100})
 					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['stingray'], "add", 1)
 					TriggerClientEvent('QBCore:Notify', src, "You caught a "..weight.."lbs Stingray!", "success")
@@ -98,11 +93,11 @@ AddEventHandler('fishing:server:catch', function()
 					TriggerClientEvent('QBCore:Notify', src, "You caught a " .. weight .. "lbs Flounder", "success")
 				end
 			elseif luck >= 70 and luck <= 75 then
-				-- if TriggerClientEvent('fish:spawnFish', src) then
+				if TriggerClientEvent('boot:spawnFish', src) then
 					Player.Functions.AddItem('fishingboot', 1, nil, {["quality"] = 100})
 					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishingboot'], "add", 1)
 					TriggerClientEvent('QBCore:Notify', src, "You caught a fishing boot!", "primary")
-				-- end
+				end
 			elseif luck >= 65 and luck <= 70 then
 				local weight = math.random(1,6)
 				local info = {species = "Bass", lbs = weight, type = "Normal"}
@@ -120,11 +115,11 @@ AddEventHandler('fishing:server:catch', function()
 					TriggerClientEvent('QBCore:Notify', src, "You caught a " .. weight .. "lbs  Cod", "success")
 				end
 			elseif luck >= 55 and luck <= 60 then
-				-- if TriggerClientEvent('fish:spawnFish', src) then
+				if TriggerClientEvent('tin:spawnFish', src) then
 					Player.Functions.AddItem('fishingtin', 1, nil, {["quality"] = 100})
 					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishingtin'], "add", 1)
 					TriggerClientEvent('QBCore:Notify', src, "You caught a fishing tin!", "primary")
-				-- end
+				end
 			elseif luck >= 0 and luck <= 55 then
 				local weight = math.random(1,5)
 				local info = {species = "Mackerel", lbs = weight, type = "Normal"}
