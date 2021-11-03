@@ -86,6 +86,39 @@ end)
 
 --============================================================== Events
 
+RegisterNetEvent('fishing:client:progressBar')
+AddEventHandler('fishing:client:progressBar', function()
+	exports['progressBars']:drawBar(1000, 'Opening Tackel Box')
+end)
+
+RegisterNetEvent('fishing:client:attemptTreasureChest')
+AddEventHandler('fishing:client:attemptTreasureChest', function()
+	local ped = PlayerPedId()
+	attemptTreasureChest()
+	QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+		if HasItem then
+			QBCore.Functions.Progressbar("accepted_key", "Inserting Key..", (Config.ChestOpenTime), false, true, {
+				disableMovement = true,
+				disableCarMovement = true,
+				disableMouse = false,
+				disableCombat = true,
+			}, {
+				animDict = "mini@repair",
+				anim = "fixing_a_player",
+				flags = 16,
+			}, {}, {}, function() -- Done
+				ClearPedTasks(ped)
+				openedTreasureChest()
+			end, function() -- Cancel
+				ClearPedTasks(ped)
+				QBCore.Functions.Notify("Canceled!", "error")
+			end)
+		else
+		  QBCore.Functions.Notify("You dont have a key to this lock!", "error")
+		end
+	  end, 'fishingkey')
+end)
+
 RegisterNetEvent('fishing:SkillBar')
 AddEventHandler('fishing:SkillBar', function(message)
 	exports['textUi']:DrawTextUi('hide')
@@ -107,31 +140,6 @@ AddEventHandler('fishing:SkillBar', function(message)
     end
 end)
 
-
-RegisterNetEvent('boot:spawnFish')
-AddEventHandler('boot:spawnFish', function()
-	RequestTheModel("prop_old_boot")
-	local pos = GetEntityCoords(PlayerPedId())
-	local ped = CreatePed(29, `prop_old_boot`, pos.x, pos.y, pos.z, 90.0, true, false)
-	SetEntityHealth(ped, 0)
-	DecorSetInt(ped, "propHack", 74)
-	SetModelAsNoLongerNeeded(`prop_old_boot`)
-	Wait(10000)
-        DeletePed(ped)
-end)
-
-RegisterNetEvent('tin:spawnFish')
-AddEventHandler('tin:spawnFish', function()
-	RequestTheModel("v_res_tt_cancrsh01")
-	local pos = GetEntityCoords(PlayerPedId())
-	local ped = CreatePed(29, `v_res_tt_cancrsh01`, pos.x, pos.y, pos.z, 90.0, true, false)
-	SetEntityHealth(ped, 0)
-	DecorSetInt(ped, "propHack", 74)
-	SetModelAsNoLongerNeeded(`v_res_tt_cancrsh01`)
-	Wait(10000)
-        DeletePed(ped)
-end)
-
 RegisterNetEvent('sharktiger:spawnFish')
 AddEventHandler('sharktiger:spawnFish', function()
 	RequestTheModel("A_C_SharkTiger")
@@ -141,7 +149,7 @@ AddEventHandler('sharktiger:spawnFish', function()
 	DecorSetInt(ped, "propHack", 74)
 	SetModelAsNoLongerNeeded(`A_C_SharkTiger`)
 	Wait(10000)
-        DeletePed(ped)	
+ 	DeletePed(ped)	
 end)
 
 RegisterNetEvent('killerwhale:spawnFish')
@@ -275,8 +283,13 @@ end)
 RegisterNetEvent('doj:client:rentaBoat')
 AddEventHandler('doj:client:rentaBoat', function(args)
 	local args = tonumber(args)
+	local chance = math.random(1, 20)
+
 	QBCore.Functions.TriggerCallback('fishing:server:checkMoney', function(isSuccess)
-		if isSuccess then
+		if isSuccess then 
+			if chance == 10 then
+				TriggerServerEvent("fishing:server:addTackleBox")
+			end
 			if args == 1 then 
 				QBCore.Functions.SpawnVehicle(Config.RentalBoat, function(boat)
 					SetVehicleNumberPlateText(boat, "Rent-a-Boat")
@@ -522,4 +535,35 @@ endFishing = function()
 		QBCore.Functions.Notify('You Stopped Fishing', 'error')
 		exports['textUi']:DrawTextUi('hide')
     end
+end
+
+attemptTreasureChest = function()
+	local ped = PlayerPedId()
+	local animDict = "veh@break_in@0h@p_m_one@"
+	local animName = "low_force_entry_ds"
+	RequestAnimDict(animDict)
+	while not HasAnimDictLoaded(animDict) do
+		Citizen.Wait(100)
+	end
+	TaskPlayAnim(ped, animDict, animName, 1.0, 1.0, 1.0, 1, 0.0, 0, 0, 0)
+	RemoveAnimDict(animDict)
+	exports['progressBars']:drawBar(1500, 'Attempting to open Treasure Chest')
+	Citizen.Wait(1500)
+	ClearPedTasks(PlayerPedId())
+end
+
+openedTreasureChest = function()
+	if math.random(1,15) == 10 then
+		TriggerServerEvent("QBCore:Server:RemoveItem", "fishingkey", 1)
+		TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["fishingkey"], "remove", 1)
+		QBCore.Functions.Notify("The corroded key has snapped", "error", 7500)
+	end
+	TriggerServerEvent("QBCore:Server:RemoveItem", "fishinglootbig", 1)
+	TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["fishinglootbig"], "remove", 1)
+	QBCore.Functions.Notify("Treasure chest opened! Be sure to collect all of your loot!!", "success", 7500)
+	local ShopItems = {} 
+	ShopItems.label = "Treasure Chest"
+	ShopItems.items = Config.largeLootboxRewards
+	ShopItems.slots = #Config.largeLootboxRewards
+	TriggerServerEvent("inventory:server:OpenInventory", "shop", "Vendingshop_", ShopItems)
 end
