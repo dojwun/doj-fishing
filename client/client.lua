@@ -4,9 +4,7 @@ local fishing = false
 local pause = false
 local pausetimer = 0
 local correct = 0
-local bait = "none"
-local genderNum = 0
-local peds = {}
+
 
 --============================================================== For testing
 
@@ -109,6 +107,31 @@ AddEventHandler('fishing:SkillBar', function(message)
     end
 end)
 
+
+RegisterNetEvent('boot:spawnFish')
+AddEventHandler('boot:spawnFish', function()
+	RequestTheModel("prop_old_boot")
+	local pos = GetEntityCoords(PlayerPedId())
+	local ped = CreatePed(29, `prop_old_boot`, pos.x, pos.y, pos.z, 90.0, true, false)
+	SetEntityHealth(ped, 0)
+	DecorSetInt(ped, "propHack", 74)
+	SetModelAsNoLongerNeeded(`prop_old_boot`)
+	Wait(10000)
+        DeletePed(ped)
+end)
+
+RegisterNetEvent('tin:spawnFish')
+AddEventHandler('tin:spawnFish', function()
+	RequestTheModel("v_res_tt_cancrsh01")
+	local pos = GetEntityCoords(PlayerPedId())
+	local ped = CreatePed(29, `v_res_tt_cancrsh01`, pos.x, pos.y, pos.z, 90.0, true, false)
+	SetEntityHealth(ped, 0)
+	DecorSetInt(ped, "propHack", 74)
+	SetModelAsNoLongerNeeded(`v_res_tt_cancrsh01`)
+	Wait(10000)
+        DeletePed(ped)
+end)
+
 RegisterNetEvent('sharktiger:spawnFish')
 AddEventHandler('sharktiger:spawnFish', function()
 	RequestTheModel("A_C_SharkTiger")
@@ -179,16 +202,6 @@ AddEventHandler('fish:spawnFish', function()
 	SetModelAsNoLongerNeeded(`a_c_fish`)
 	Wait(10000)
     DeletePed(ped)
-end)
-
-RegisterNetEvent('fishing:setbait')
-AddEventHandler('fishing:setbait', function(bool)
-	bait = bool
-end)
-
-RegisterNetEvent('fishing:client:progressBar')
-AddEventHandler('fishing:client:progressBar', function()
-	exports['progressBars']:drawBar(1000, 'Applying Fishing Bait')
 end)
 
 RegisterNetEvent('fishing:client:useFishingBox')
@@ -464,7 +477,6 @@ catchAnimation = function()
 	local time = 1750
 	exports['progressBars']:drawBar(time, 'Fish Caught!')
 	Citizen.Wait(time)
-	-- TriggerServerEvent('fishing:server:catch', bait)
 	TriggerServerEvent('fishing:server:catch') 
  
 	if math.random(1, 100) < 50 then
