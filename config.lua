@@ -7,17 +7,8 @@ Config.StopFishing =  73                                        -- Stop Fishing 
 Config.BoatPrice = 100                                          -- Price of the boat rental, price is divided when boat is returned
 Config.PedDistance = 60.0                                       -- Distance of ped spawning
 Config.PearlsExoticCard = "pearlscard"                          -- Name of item to sell exotic/illegal fish
-Config.TestFish = false						-- Test Fish with commands /startfish or /spawnfish
+Config.TestFish = true											-- Test Fish with commands /startfish or /spawnfish
 
-Config.fishingRodPrice = 50                                     -- Price of a fishing rod
-Config.fishingBaitPrice = 5                                     -- Price of fishing bait
-Config.BoatAnchorPrice = 500                                    -- Price of a Boat Anchor
-Config.fishPrice         = 35                                   -- Price of Normal Fish
-Config.stingrayPrice     = 50                                   -- Price of Stingrays
-Config.dolphinPrice      = 100                                  -- Price of Dolphins
-Config.sharktigerPrice   = 200                                  -- Price of Tigersharks
-Config.sharkhammerPrice  = 200                                  -- Price of Hammerhead Sharks
-Config.killerwhalePrice  = 500                                  -- Price of Killer whales
 Config.PearlsSellsBlip = vector3(-1816.406, -1193.334, 13.305)  -- Blip for Fish Sells
 
 Config.BoatSpawnLocation = {
@@ -34,3 +25,21 @@ Config.PlayerReturnLocation = {
 	ActDam 		= vector4(1695.805, 43.456, 161.767, 103.579),
 	AlamoSea 	= vector4(1301.1, 4233.696, 33.909, 337.548),        
 }
+
+-- Gear
+Config.fishingRodPrice = 50                                     -- Price of a fishing rod
+Config.fishingBaitPrice = 5                                     -- Price of fishing bait
+Config.BoatAnchorPrice = 500                                    -- Price of a Boat Anchor
+
+-- Regular Fish
+Config.mackerelPrice     = 5                                    -- Price of Stingrays
+Config.codfishPrice      = 15                                   -- Price of Stingrays
+Config.bassPrice         = 35                                   -- Price of Normal Fish
+Config.flounderPrice     = 40                                   -- Price of Stingrays
+Config.stingrayPrice     = 50                                   -- Price of Stingrays
+
+-- Exotic Fish
+Config.dolphinPrice      = 100                                  -- Price of Dolphins
+Config.sharktigerPrice   = 200                                  -- Price of Tigersharks
+Config.sharkhammerPrice  = 200                                  -- Price of Hammerhead Sharks
+Config.killerwhalePrice  = 500                                  -- Price of Killer whales
