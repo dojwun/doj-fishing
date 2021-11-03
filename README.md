@@ -7,7 +7,7 @@
 # Info
 - **[Rent](https://streamable.com/bymhyv)** a fishing boat
 - **[Return](https://streamable.com/ns3qeb)** boat for small refund
-- **[Fish](https://streamable.com/ca7wo7)** spawn once caught **Updated Anim* 
+- **[Fish](https://streamable.com/ca7wo7)** spawn once caught
 - **[Sell](https://streamable.com/5c8nm0)** regular fish easily & exotics no so much 
 - **[Purchase](https://i.imgur.com/LIj0Rs8.png)** fishing gear to start your trip 
 - **[Store](https://i.imgur.com/eeQrnD0.png)** fish you have caught
