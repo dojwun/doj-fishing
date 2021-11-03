@@ -199,23 +199,25 @@ end)
 
 RegisterNetEvent('fishing:fishstart')
 AddEventHandler('fishing:fishstart', function()
-	playerPed = PlayerPedId()
-	local pos = GetEntityCoords(PlayerPedId())
-	if IsPedInAnyVehicle(playerPed) then
-		QBCore.Functions.Notify('You can not fish from a vehicle', 'error')
-	else
-		if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z - 3.0)  then
-			local time = 2500
-			exports['progressBars']:drawBar(time, 'Using Fishing Rod')
-			Citizen.Wait(time)
-			exports['textUi']:DrawTextUi('show', "Press [X] to stop fishing at any time")
-			-- TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_FISHING", 0, true)
-			-- fishing = true
-			fishAnimation()
+	local playerPed = PlayerPedId()
+	local pos = GetEntityCoords(playerPed) 
+	QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+		if IsPedSwimming(playerPed) then return QBCore.Functions.Notify("You can't be swimming and fishing at the same time.", "error") end 
+        if IsPedInAnyVehicle(playerPed) then return QBCore.Functions.Notify("You need to exit your vehicle to start fishing.", "error") end 
+		if HasItem then
+			if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z - 3.0)  then
+				local time = 2500
+				exports['progressBars']:drawBar(time, 'Using Fishing Rod')
+				Citizen.Wait(time)
+				exports['textUi']:DrawTextUi('show', "Press [X] to stop fishing at any time")
+				fishAnimation()
+			else
+				QBCore.Functions.Notify('You need to go further away from the shore', 'error')
+			end
 		else
-			QBCore.Functions.Notify('You need to go further away from the shore', 'error')
+		  QBCore.Functions.Notify("You need bait to fish.", "error")
 		end
-	end
+	  end, 'fishbait')
 end, false)
 
 RegisterNetEvent('doj:client:ReturnBoat')
