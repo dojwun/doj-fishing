@@ -16,17 +16,7 @@ if Config.TestFish then
 	end)
 
 	RegisterCommand('spawnfish', function()
-		local  RandomFish = {     
-			"killerwhale",
-			"dolphin",
-			"sharkhammer",
-			"sharktiger",
-			"none",
-			"stingray",
-			"fish"
-		}
-		local FishBait = RandomFish[math.random(#RandomFish)] 
-		TriggerServerEvent('fishing:server:catch', FishBait) 
+		TriggerServerEvent('fishing:server:catch') 
 	end, false)
 end
 
@@ -200,6 +190,12 @@ RegisterNetEvent('fishing:client:progressBar')
 AddEventHandler('fishing:client:progressBar', function()
 	exports['progressBars']:drawBar(1000, 'Applying Fishing Bait')
 end)
+
+RegisterNetEvent('fishing:client:useFishingBox')
+AddEventHandler('fishing:client:useFishingBox', function(BoxId)
+	TriggerServerEvent("inventory:server:OpenInventory", "stash", 'FishingBox-'..BoxId, {maxweight = 18000000, slots = 250})
+	TriggerEvent("inventory:client:SetCurrentStash", 'FishingBox-'..BoxId) 
+end) 
 
 RegisterNetEvent('fishing:fishstart')
 AddEventHandler('fishing:fishstart', function()
@@ -466,7 +462,9 @@ catchAnimation = function()
 	local time = 1750
 	exports['progressBars']:drawBar(time, 'Fish Caught!')
 	Citizen.Wait(time)
-	TriggerServerEvent('fishing:server:catch', bait) 
+	-- TriggerServerEvent('fishing:server:catch', bait)
+	TriggerServerEvent('fishing:server:catch') 
+ 
 	if math.random(1, 100) < 50 then
 		TriggerServerEvent('hud:server:RelieveStress', 50)
 	end
@@ -487,7 +485,7 @@ fishAnimation = function()
 	fishingRodEntity()
 	fishing = true
 	Citizen.Wait(3700)
-	exports['textUi']:DrawTextUi('hide')
+	exports['textUi']:DrawTextUi('hide') 
 	-- RemoveAnimDict(animDict)
 end
 
