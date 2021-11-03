@@ -4,7 +4,7 @@
 
 **[Source](https://github.com/Kuzkay/esx_AdvancedFishing)**
 
-## Info
+# Info
 - **[Rent](https://streamable.com/bymhyv)** a fishing boat
 - **[Return](https://streamable.com/ns3qeb)** boat for small refund
 - **[Fish](https://streamable.com/ca7wo7)** spawn once caught **Updated Anim* 
@@ -17,7 +17,7 @@
 - Few extras & More to come ***Stay Tuned***
 
 
-## Dependencies:
+# Dependencies
 **[textUi](https://github.com/dojwun/textUi)**
 
 **[qb-menu](https://github.com/qbcore-framework/qb-menu)**
@@ -60,7 +60,7 @@
 
 
 
-## Required:
+# Required
 - qb-core/shared.lua info
 ```
 	-- Regular Fish
@@ -89,4 +89,40 @@
 
  ``` 
 
+# Optional (if you are not using my **[qb-inventory](https://github.com/dojwun/qb-inventory)**)
+- Fish inventory tooltip 
+- qb-inventory/html/js/app.js
+```
+	else if (itemData.name == "bass") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+        } else if (itemData.name == "stingray") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+        } else if (itemData.name == "flounder") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+        } else if (itemData.name == "codfish") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+        } else if (itemData.name == "mackerel") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+        } else if (itemData.name == "dolphin") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+        } else if (itemData.name == "sharkhammer") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+        } else if (itemData.name == "sharktiger") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+        } else if (itemData.name == "killerwhale") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+        } else if (itemData.name == "fishicebox") {
+            $(".item-info-title").html('<p>' + itemData.label + ' ' + itemData.info.boxid + '</p>')
+            $(".item-info-description").html('<p><strong>Box Owner: </strong><span>' + itemData.info.boxOwner + '</span></p> Ice Box to store all of your fish');
+        }
+```
 
