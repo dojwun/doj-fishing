@@ -16,8 +16,8 @@
 - Catch & Sell 13 diffrent items (5 fish, 4 exotic, 2 Trash, 2 Rewards)
 - Chance to find a **[Tackle Box](https://streamable.com/4e1kte)** left over from another fisherman when purchasing a boat
 - ***Tackle Box*** contains a **[Pearls Seafood Card](https://i.imgur.com/xFEmoLt.png)** required to sell exotic fish
-- Chance to catch a **[Small Loot Box](https://i.imgur.com/fGsqgZQ.png)** & **[Treasure Chest](https://i.imgur.com/TcCevdc.png)** while fishing
-- **[Small Loot Box](https://i.imgur.com/fGsqgZQ.png)** contains a **[Corroded Key](https://i.imgur.com/Pyg81vH.png)** that is needed to open a **[Treasure Chest](https://i.imgur.com/TcCevdc.png)**
+- Chance to catch a ***Small Loot Box*** & ***Treasure Chest*** while fishing
+- **[Small Loot Box](https://streamable.com/4ff2ht)** contains a **[Corroded Key](https://i.imgur.com/Pyg81vH.png)** that is needed to open a **[Treasure Chest](https://streamable.com/4ff2ht)**
 
 
 
