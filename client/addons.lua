@@ -311,9 +311,9 @@ AddEventHandler('doj:client:buyFishingGear', function()
             header = "Purchase Fishing Gear",
             isMenuHeader = true
         },
-		{
-            header = "Buy Fishing Rod",
-            txt = "$"..Config.fishingRodPrice,
+        {
+            header = "Buy Fishing Bait",
+            txt = "$"..Config.fishingBaitPrice,
             params = {
 				isServer = true,
                 event = "fishing:server:BuyFishingGear",
@@ -321,8 +321,8 @@ AddEventHandler('doj:client:buyFishingGear', function()
             }
         },
 		{
-            header = "Buy Fishing Bait",
-            txt = "$"..Config.fishingBaitPrice,
+            header = "Buy Fishing Rod",
+            txt = "$"..Config.fishingRodPrice,
             params = {
 				isServer = true,
                 event = "fishing:server:BuyFishingGear",
