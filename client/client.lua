@@ -97,7 +97,7 @@ AddEventHandler('fishing:client:attemptTreasureChest', function()
 	attemptTreasureChest()
 	QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
 		if HasItem then
-			QBCore.Functions.Progressbar("accepted_key", "Inserting Key..", (Config.ChestOpenTime), false, true, {
+			QBCore.Functions.Progressbar("accepted_key", "Inserting Key..", (math.random(2000, 5000)), false, true, {
 				disableMovement = true,
 				disableCarMovement = true,
 				disableMouse = false,
