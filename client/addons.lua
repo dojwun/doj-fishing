@@ -415,5 +415,5 @@ AddEventHandler('doj:client:SellillegalFish', function()
 		else
 			QBCore.Functions.Notify('You cannot sell to us at the moment, sorry for the inconvenience', 'error', 3500)
 		end
-	end, Config.PearlsExoticCard)
+	end, "pearlscard")
 end)
