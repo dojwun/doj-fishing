@@ -10,9 +10,10 @@
 - **[Fish](https://streamable.com/ca7wo7)** spawn once caught **Updated Anim* 
 - **[Sell](https://streamable.com/5c8nm0)** regular fish easily & exotics no so much 
 - **[Purchase](https://i.imgur.com/bwscYuB.png)** fishing gear to start your trip 
+- **[Store](https://i.imgur.com/eeQrnD0.png)** fish you have caught
+-  **[Inventory Tooltip](https://i.imgur.com/vnpIb2b.png)** will display species, weight & type
 - Catch & Sell 9 diffrent fish (5 normal & 4 exotic) + 2 Extra Trash items
 - Sell exotic fish with a special card item ***(You must choose how a player will recieve this item!)***
-- Fish display species, weight & type in **[tooltip](https://i.imgur.com/vnpIb2b.png)** 
 - Few extras & More to come ***Stay Tuned***
 
 
@@ -55,6 +56,7 @@
 ![bait](https://i.imgur.com/A4XBvDb.png)
 ![anchor](https://i.imgur.com/1OYiDYa.png)
 ![pearlscard](https://i.imgur.com/xFEmoLt.png)
+![fishingicebox](https://i.imgur.com/YnJzonA.png)
 
 
 
@@ -83,6 +85,7 @@
 	['fishingrod'] 			 		 = {['name'] = 'fishingrod', 				['label'] = 'Fishing Rod', 				['weight'] = 750, 		['type'] = 'item', 		['image'] = 'fishingrod.png', 			['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A fishing rod for adventures with friends!!'},	
 	['pearlscard'] 			 	 	 = {['name'] = 'pearlscard', 				['label'] = 'Pearls Exotic Card', 		['weight'] = 100, 		['type'] = 'item', 		['image'] = 'pearlscard.png', 			['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A special card to sell exotic goods at Pearl\'s Seafood Restaurant'},	
 	['anchor'] 			 	 		 = {['name'] = 'anchor', 					['label'] = 'Boat Anchor', 				['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'anchor.png', 				['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Boat Anchor'},	
+	['fishicebox'] 			 	 	 = {['name'] = 'fishicebox', 				['label'] = 'Fishing Ice Chest', 		['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'fishicebox.png', 			['unique'] = true,     ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Ice Box to store all of your fish'},	
 
  ``` 
 
