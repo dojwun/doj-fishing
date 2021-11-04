@@ -105,7 +105,7 @@
  ``` 
 
 # Optional (if you are not using my **[qb-inventory](https://github.com/dojwun/qb-inventory)**)
-- Fish inventory tooltip 
+- This code is to display **[Inventory Tooltip](https://i.imgur.com/vnpIb2b.png)**
 - qb-inventory/html/js/app.js
 ```
 	else if (itemData.name == "bass") {
