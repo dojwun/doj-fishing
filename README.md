@@ -1,7 +1,14 @@
-# Fishing Script for QB 
+# Fishing Script for QB by ```</dojwun>#2103```
 
 
 **[Source](https://github.com/Kuzkay/esx_AdvancedFishing)**
+
+# About
+- Optimized
+- Fish anywhere
+- Random loot pool
+- 3 diffrent skillbars to choose from
+- Utilizes qb-target,qb-menu,& text ui
 
 # Info
 - **[Rent](https://streamable.com/bymhyv)** a fishing boat
