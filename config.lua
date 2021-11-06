@@ -3,11 +3,12 @@ Config = {}
 Config.Fish24hours = true                                       -- [true = fish anytime] [false = fishing only available moring to night (6am to 11pm in-game time)]
 Config.FishingWaitTime = {minTime = 21000, maxTime = 45000}     -- How long a player will be waiting to fish, during or after casting fishingrod
 Config.RentalBoat = "dinghy"                                    -- Fishing boat of Choice
-Config.StopFishing =  73                                        -- Stop Fishing Key [X]
+Config.StopFishing =  73                                        -- Stop Fishing Key [X] (https://docs.fivem.net/docs/game-references/controls/)
 Config.BoatPrice = 100                                          -- Price of the boat rental, price is divided when boat is returned
-Config.TestFish = true											-- Test Fish with commands /startfish or /spawnfish
+Config.TestFish = false											-- Test Fish with commands /startfish or /spawnfish
+Config.Skillbar = "np-skillbar"                             	-- Must choose one of the avalible skillbars ["reload-skillbar","np-skillbar","qb-skillbar"]
 
-Config.PearlsSellsBlip = vector3(-1816.406, -1193.334, 13.305)  -- Blip for Fish Sells
+Config.PearlsSellsBlip = vector3(-1816.406, -1193.334, 13.305)  -- Blip to sell fish you have caught
 
 Config.BoatSpawnLocation = {
     LaPuerta	= vector4(-802.05, -1504.36, -0.47, 112.27),        
@@ -47,7 +48,7 @@ Config.killerwhalePrice  = 500                                  -- Price of Kill
 Config.smallLootboxCash = 100                                  	-- Price of the cash reward for the "Metal Box"
 Config.smallLootboxReward = 'diamond_ring'                      -- Item reward besides the "Corroded Key"
 
-Config.largeLootboxRewards = {
+Config.largeLootboxRewards = {                                  -- Rewards found in the treasure chest (keep price = 0)
     [1] = { name = "water", price = 0, amount = 1, info = {}, type = "item", slot = 1, },
 	[2] = { name = "water", price = 0, amount = 1, info = {}, type = "item", slot = 2, },
     [3] = { name = "water", price = 0, amount = 1, info = {}, type = "item", slot = 3, },
