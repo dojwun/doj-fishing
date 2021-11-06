@@ -1,12 +1,10 @@
 
-
 local fishing = false
 local pause = false
 local pausetimer = 0
 local correct = 0
 local genderNum = 0
 local peds = {} 
-
 
 --============================================================== For testing
 
@@ -16,7 +14,7 @@ if Config.TestFish then
 	end)
 
 	RegisterCommand('spawnfish', function()
-		TriggerServerEvent('fishing:server:catch') 
+	 TriggerServerEvent('fishing:server:catch') 
 	end, false)
 end
 
@@ -113,13 +111,11 @@ end)
 
 --============================================================== Events
 
-RegisterNetEvent('fishing:client:progressBar')
-AddEventHandler('fishing:client:progressBar', function()
+RegisterNetEvent('fishing:client:progressBar', function()
 	exports['progressBars']:drawBar(1000, 'Opening Tackel Box')
 end)
 
-RegisterNetEvent('fishing:client:attemptTreasureChest')
-AddEventHandler('fishing:client:attemptTreasureChest', function()
+RegisterNetEvent('fishing:client:attemptTreasureChest', function()
 	local ped = PlayerPedId()
 	attemptTreasureChest()
 	QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
@@ -146,29 +142,48 @@ AddEventHandler('fishing:client:attemptTreasureChest', function()
 	  end, 'fishingkey')
 end)
 
-RegisterNetEvent('fishing:SkillBar')
-AddEventHandler('fishing:SkillBar', function(message)
+RegisterNetEvent('fishing:SkillBar', function(message)
 	exports['textUi']:DrawTextUi('hide')
-    local finished = exports["reload-skillbar"]:taskBar(math.random(5000,7500),math.random(2,4))
-    if finished ~= 100 then
-		QBCore.Functions.Notify('The Fish Got Away!', 'error')
-    else
-        local finished2 = exports["reload-skillbar"]:taskBar(math.random(2500,5000),math.random(3,5))
-        if finished2 ~= 100 then
-			QBCore.Functions.Notify('The Fish Escaped!', 'error')
-        else
-			local finished3 = exports["reload-skillbar"]:taskBar(math.random(900,2000),math.random(5,7))
-			if finished3 ~= 100 then
-				QBCore.Functions.Notify('The Fish Got Away!', 'error')
+	
+	if Config.Skillbar == "reload-skillbar" then
+		local reload-skillbar = exports["reload-skillbar"]:taskBar(math.random(5000,7500),math.random(2,4))
+		if reload-skillbar ~= 100 then
+			QBCore.Functions.Notify('The Fish Got Away!', 'error')
+		else
+			local reload-skillbar2 = exports["reload-skillbar"]:taskBar(math.random(2500,5000),math.random(3,5))
+			if reload-skillbar2 ~= 100 then
+				QBCore.Functions.Notify('The Fish Escaped!', 'error')
 			else
-				catchAnimation()
+				local reload-skillbar3 = exports["reload-skillbar"]:taskBar(math.random(900,2000),math.random(5,7))
+				if reload-skillbar3 ~= 100 then
+					QBCore.Functions.Notify('The Fish Got Away!', 'error')
+				else
+					catchAnimation()
+				end
 			end
-        end
-    end
-end)
+		end
+	elseif Config.Skillbar == "np-skillbar" then
+		local np-skillbar = exports["np-skillbar"]:taskBar(1000,math.random(3,5))
+		if np-skillbar ~= 100 then
+			QBCore.Functions.Notify('The Fish Got Away!', 'error')
+		else
+			catchAnimation()
+		end
+	elseif Config.Skillbar == "qb-skillbar" then
+		local qb-skillbar = exports['qb-skillbar']:GetSkillbarObject()
+		qb-skillbar.Start({
+			duration = taskBar(math.random(2500,5000),
+			pos = math.random(10, 30),
+			width = math.random(10, 20),
+		}, function()
+			catchAnimation()
+		end, function()
+			QBCore.Functions.Notify('The Fish Escaped!', 'error')
+		end)
+	end
+end) 
 
-RegisterNetEvent('fishing:client:spawnFish')
-AddEventHandler('fishing:client:spawnFish', function(args)
+RegisterNetEvent('fishing:client:spawnFish', function(args)
 	local time = 10000
 	local args = tonumber(args)
 	if args == 1 then 
@@ -228,14 +243,12 @@ AddEventHandler('fishing:client:spawnFish', function(args)
 	end
 end)
 
-RegisterNetEvent('fishing:client:useFishingBox')
-AddEventHandler('fishing:client:useFishingBox', function(BoxId)
+RegisterNetEvent('fishing:client:useFishingBox', function(BoxId)
 	TriggerServerEvent("inventory:server:OpenInventory", "stash", 'FishingBox_'..BoxId, {maxweight = 18000000, slots = 250})
 	TriggerEvent("inventory:client:SetCurrentStash", 'FishingBox_'..BoxId) 
 end) 
 
-RegisterNetEvent('fishing:fishstart')
-AddEventHandler('fishing:fishstart', function()
+RegisterNetEvent('fishing:fishstart', function()
 	local playerPed = PlayerPedId()
 	local pos = GetEntityCoords(playerPed) 
 	QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
@@ -257,8 +270,7 @@ AddEventHandler('fishing:fishstart', function()
 	  end, 'fishbait')
 end, false)
 
-RegisterNetEvent('doj:client:ReturnBoat')
-AddEventHandler('doj:client:ReturnBoat', function(args)
+RegisterNetEvent('doj:client:ReturnBoat', function(args)
 	local ped = PlayerPedId()
 	local args = tonumber(args)
 	if IsPedInAnyVehicle(ped) then
@@ -296,8 +308,7 @@ AddEventHandler('doj:client:ReturnBoat', function(args)
 	end
 end)
 
-RegisterNetEvent('doj:client:rentaBoat')
-AddEventHandler('doj:client:rentaBoat', function(args)
+RegisterNetEvent('doj:client:rentaBoat', function(args)
 	local args = tonumber(args)
 	local chance = math.random(1, 20)
 
@@ -356,8 +367,7 @@ AddEventHandler('doj:client:rentaBoat', function(args)
 	end)
 end)
 
-RegisterNetEvent('doj:client:BoatMenu')
-AddEventHandler('doj:client:BoatMenu', function(data)
+RegisterNetEvent('doj:client:BoatMenu', function(data)
 	local ped = PlayerPedId()
     local inVehicle = IsPedInAnyVehicle(ped)
 	if data.location == 1 then 
@@ -453,8 +463,7 @@ AddEventHandler('doj:client:BoatMenu', function(data)
 	end
 end)
 
-RegisterNetEvent('fishing:client:anchor')
-AddEventHandler('fishing:client:anchor', function()
+RegisterNetEvent('fishing:client:anchor', function()
     local currVeh = GetVehiclePedIsIn(PlayerPedId(), false)
     if currVeh ~= 0 then
         local vehModel = GetEntityModel(currVeh)
