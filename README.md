@@ -1,4 +1,4 @@
-# Fishing Script for QB by ```</dojwun>#2103```
+# Fishing script for QB but also not for QB at the same time:)
 
 
 **[Source](https://github.com/Kuzkay/esx_AdvancedFishing)**
