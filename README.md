@@ -29,9 +29,17 @@
 
 **[qb-target](https://github.com/BerkieBb/berkie-target)**
 
-**[reload-skillbar](https://github.com/Utinax/reload-skillbar)**
 
 **[progressBars](https://drive.google.com/drive/folders/1uuxtWibJIZYx2yDY_7y4mnl5AbqDpSqt?usp=sharing)**
+
+### Skillbars
+
+**[reload-skillbar](https://github.com/Utinax/reload-skillbar)**
+
+**[np-skillbar](https://drive.google.com/drive/folders/17xznaEcn5rmP0aOKL5XIj6SIfqQVB8iH?usp=sharing)**
+
+**[qb-skillbar](https://github.com/qbcore-framework/qb-skillbar)**
+
 
 # images
 - **Regular Fish**
@@ -105,8 +113,8 @@
  ``` 
 
 # Optional (if you are not using my **[qb-inventory](https://github.com/dojwun/qb-inventory)**)
-- This code is to display **[Inventory Tooltip](https://i.imgur.com/vnpIb2b.png)**
-- qb-inventory/html/js/app.js
+- This code is to display **[Inventory Tooltip](https://i.imgur.com/vnpIb2b.png)** 
+- inside ```qb-inventory/html/js/app.js``` look for the ```function FormatItemInfo```
 ```
 	else if (itemData.name == "bass") {
             $(".item-info-title").html('<p>' + itemData.label + '</p>')
