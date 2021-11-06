@@ -14,8 +14,8 @@ if Config.TestFish then
 	end)
 
 	RegisterCommand('spawnfish', function()
-	 TriggerServerEvent('fishing:server:catch') 
-	end, false)
+	 	TriggerServerEvent('fishing:server:catch') 
+	end)
 end
 
 --============================================================== Threads
@@ -144,18 +144,17 @@ end)
 
 RegisterNetEvent('fishing:SkillBar', function(message)
 	exports['textUi']:DrawTextUi('hide')
-	
 	if Config.Skillbar == "reload-skillbar" then
-		local reload-skillbar = exports["reload-skillbar"]:taskBar(math.random(5000,7500),math.random(2,4))
-		if reload-skillbar ~= 100 then
+		local finished = exports["reload-skillbar"]:taskBar(math.random(5000,7500),math.random(2,4))
+		if finished ~= 100 then
 			QBCore.Functions.Notify('The Fish Got Away!', 'error')
 		else
-			local reload-skillbar2 = exports["reload-skillbar"]:taskBar(math.random(2500,5000),math.random(3,5))
-			if reload-skillbar2 ~= 100 then
+			local finished2 = exports["reload-skillbar"]:taskBar(math.random(2500,5000),math.random(3,5))
+			if finished2 ~= 100 then
 				QBCore.Functions.Notify('The Fish Escaped!', 'error')
 			else
-				local reload-skillbar3 = exports["reload-skillbar"]:taskBar(math.random(900,2000),math.random(5,7))
-				if reload-skillbar3 ~= 100 then
+				local finished3 = exports["reload-skillbar"]:taskBar(math.random(900,2000),math.random(5,7))
+				if finished3 ~= 100 then
 					QBCore.Functions.Notify('The Fish Got Away!', 'error')
 				else
 					catchAnimation()
@@ -163,16 +162,16 @@ RegisterNetEvent('fishing:SkillBar', function(message)
 			end
 		end
 	elseif Config.Skillbar == "np-skillbar" then
-		local np-skillbar = exports["np-skillbar"]:taskBar(1000,math.random(3,5))
-		if np-skillbar ~= 100 then
+		local finished = exports["np-skillbar"]:taskBar(1000,math.random(3,5))
+		if finished ~= 100 then
 			QBCore.Functions.Notify('The Fish Got Away!', 'error')
 		else
 			catchAnimation()
 		end
 	elseif Config.Skillbar == "qb-skillbar" then
-		local qb-skillbar = exports['qb-skillbar']:GetSkillbarObject()
-		qb-skillbar.Start({
-			duration = taskBar(math.random(2500,5000),
+		local Skillbar = exports['qb-skillbar']:GetSkillbarObject()
+		Skillbar.Start({
+			duration = math.random(2500,5000),
 			pos = math.random(10, 30),
 			width = math.random(10, 20),
 		}, function()
