@@ -3,6 +3,8 @@
 
 **[Source](https://github.com/Kuzkay/esx_AdvancedFishing)**
 
+**[Inspiration](https://github.com/sven20202020/qb-fishing)**
+
 # About
 - Optimized
 - Fish anywhere
