@@ -1,4 +1,4 @@
-# Fishing script for QB but also not for QB at the same time:)
+# Fishing script for QB
 
 
 **[Source](https://github.com/Kuzkay/esx_AdvancedFishing)**
