@@ -7,6 +7,7 @@ Config.StopFishing =  73                                        -- Stop Fishing 
 Config.BoatPrice = 100                                          -- Price of the boat rental, price is divided when boat is returned
 Config.TestFish = false											-- Test Fish with commands /startfish or /spawnfish
 Config.Skillbar = "np-skillbar"                             	-- Must choose one of the avalible skillbars ["reload-skillbar","np-skillbar","qb-skillbar"]
+Config.targetExport = "qb-target"                               -- The name of the Target export you are using ["qb-target", "qtarget", "bt-target"]
 
 Config.PearlsSellsBlip = vector3(-1816.406, -1193.334, 13.305)  -- Blip to sell fish you have caught
 
