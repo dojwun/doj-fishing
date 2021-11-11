@@ -1,5 +1,5 @@
 -- --============================================================== Exports
-exports['qb-target']:AddTargetModel(`s_m_y_ammucity_01`, {
+exports[Config.targetExport]:AddTargetModel(`s_m_y_ammucity_01`, {
     options = {
         {
             event = "doj:client:BoatMenu",
@@ -16,7 +16,7 @@ exports['qb-target']:AddTargetModel(`s_m_y_ammucity_01`, {
     distance = 10.0
 })
 
-exports['qb-target']:AddTargetModel(`u_m_m_filmdirector`, {
+exports[Config.targetExport]:AddTargetModel(`u_m_m_filmdirector`, {
     options = {
         {
             event = "doj:client:BoatMenu",
@@ -33,7 +33,7 @@ exports['qb-target']:AddTargetModel(`u_m_m_filmdirector`, {
     distance = 10.0
 })
 
-exports['qb-target']:AddTargetModel(`s_m_o_busker_01`, {
+exports[Config.targetExport]:AddTargetModel(`s_m_o_busker_01`, {
     options = {
         {
             event = "doj:client:BoatMenu",
@@ -50,7 +50,7 @@ exports['qb-target']:AddTargetModel(`s_m_o_busker_01`, {
     distance = 10.0
 })
 
-exports['qb-target']:AddTargetModel(`ig_cletus`, {
+exports[Config.targetExport]:AddTargetModel(`ig_cletus`, {
     options = {
         {
             event = "doj:client:BoatMenu",
@@ -67,7 +67,7 @@ exports['qb-target']:AddTargetModel(`ig_cletus`, {
     distance = 10.0
 })
 
-exports['qb-target']:AddTargetModel(`a_m_m_hillbilly_01`, {
+exports[Config.targetExport]:AddTargetModel(`a_m_m_hillbilly_01`, {
     options = {
         {
             event = "doj:client:BoatMenu",
@@ -84,7 +84,7 @@ exports['qb-target']:AddTargetModel(`a_m_m_hillbilly_01`, {
     distance = 10.0
 })
 
-exports['qb-target']:AddTargetModel(`s_m_y_busboy_01`, {
+exports[Config.targetExport]:AddTargetModel(`s_m_y_busboy_01`, {
     options = {
         {
             event = "doj:client:SellLegalFish",
