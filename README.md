@@ -156,5 +156,5 @@
             $(".item-info-title").html('<p>' + itemData.label + ' ' + itemData.info.boxid + '</p>')
             $(".item-info-description").html('<p><strong>Box Owner: </strong><span>' + itemData.info.boxOwner + '</span></p> Ice Box to store all of your fish');
         }
-```
+``` 
 
