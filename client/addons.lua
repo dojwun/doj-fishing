@@ -1,3 +1,6 @@
+
+local QBCore = exports['qb-core']:GetCoreObject()
+
 function BoatMenuLaPuerta()
     exports['qb-menu']:openMenu({
         {
