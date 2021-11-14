@@ -1,4 +1,7 @@
 
+local QBCore = exports['qb-core']:GetCoreObject()
+
+
 local fishing = false
 local pause = false
 local pausetimer = 0
