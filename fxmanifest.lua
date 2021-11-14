@@ -9,5 +9,4 @@ server_script 'server/*.lua'
 
 shared_scripts { 
 	'config.lua',
-	'@qb-core/import.lua'
 }
