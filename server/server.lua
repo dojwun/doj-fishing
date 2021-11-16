@@ -1,6 +1,4 @@
-
 local QBCore = exports['qb-core']:GetCoreObject()
-
 --============================================================================ Items
 
 QBCore.Functions.CreateUseableItem("anchor", function(source, item)
@@ -70,8 +68,14 @@ end)
 
 --============================================================================ Events
 
-RegisterServerEvent("fishing:server:addTackleBox")
-AddEventHandler("fishing:server:addTackleBox", function()
+RegisterNetEvent('fishing:server:removeFishingBait', function()
+	local src = source
+    local Player = QBCore.Functions.GetPlayer(source)
+    Player.Functions.RemoveItem('fishbait', 1)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishbait'], "remove", 1)
+end)
+
+RegisterNetEvent("fishing:server:addTackleBox", function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
 	TriggerClientEvent('QBCore:Notify', src, "There seems to tackle box left over from another fisherman", "primary")
@@ -81,8 +85,7 @@ AddEventHandler("fishing:server:addTackleBox", function()
 	end)
 end) 
 
-RegisterServerEvent("fishing:server:returnDeposit")
-AddEventHandler("fishing:server:returnDeposit", function()
+RegisterNetEvent("fishing:server:returnDeposit", function()
 	local src = source
     local pData = QBCore.Functions.GetPlayer(src)
 	local price = math.floor(Config.BoatPrice/2)
@@ -90,8 +93,7 @@ AddEventHandler("fishing:server:returnDeposit", function()
 	TriggerClientEvent('QBCore:Notify', src, "Boat has been returned for $"..price, "success")
 end) 
 
-RegisterServerEvent('fishing:server:catch')
-AddEventHandler('fishing:server:catch', function() 
+RegisterNetEvent('fishing:server:catch', function() 
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local luck = math.random(1, 100)
@@ -185,8 +187,7 @@ AddEventHandler('fishing:server:catch', function()
     end
 end)
 
-RegisterServerEvent('fishing:server:SellillegalFish')
-AddEventHandler('fishing:server:SellillegalFish', function(args)
+RegisterNetEvent('fishing:server:SellillegalFish', function(args)
 	local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 	local args = tonumber(args)
@@ -241,8 +242,7 @@ AddEventHandler('fishing:server:SellillegalFish', function(args)
 	end
 end)
 
-RegisterServerEvent('fishing:server:SellLegalFish')
-AddEventHandler('fishing:server:SellLegalFish', function(args) 
+RegisterNetEvent('fishing:server:SellLegalFish', function(args) 
 	local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 	local args = tonumber(args)
@@ -309,8 +309,7 @@ AddEventHandler('fishing:server:SellLegalFish', function(args)
 	end
 end)
 
-RegisterServerEvent('fishing:server:BuyFishingGear')
-AddEventHandler('fishing:server:BuyFishingGear', function(args)
+RegisterNetEvent('fishing:server:BuyFishingGear', function(args)
 	local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 	local args = tonumber(args)
@@ -358,6 +357,7 @@ AddEventHandler('fishing:server:BuyFishingGear', function(args)
 		end
 	end
 end)
+
 
 --============================================================================ Callbacks
 QBCore.Functions.CreateCallback('fishing:server:checkMoney', function(source, cb)
