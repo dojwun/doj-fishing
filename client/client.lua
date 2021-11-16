@@ -1,7 +1,5 @@
 
 local QBCore = exports['qb-core']:GetCoreObject()
-
-
 local fishing = false
 local pause = false
 local pausetimer = 0
@@ -22,7 +20,7 @@ if Config.TestFish then
 end
 
 --============================================================== Threads
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		Wait(1200)
 		if pause and fishing then
@@ -31,9 +29,9 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		Wait(1)
 		if fishing then
 				if IsControlJustReleased(0, 23) then
 					input = 1
@@ -41,17 +39,20 @@ Citizen.CreateThread(function()
 
 			if IsControlJustReleased(0, Config.StopFishing) then
 				endFishing()
+				QBCore.Functions.Notify('You Stopped Fishing', 'error')
 			end
 
 			if fishing then
 				playerPed = PlayerPedId()
 				local pos = GetEntityCoords(playerPed)
-				if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0)  then
+				if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z -3.0)  then
 				else
 					endFishing()
+					QBCore.Functions.Notify('Water isnt deep enough to fish', 'error')
 				end
 				if IsEntityDead(playerPed) or IsEntityInWater(playerPed) then
 					endFishing()
+					QBCore.Functions.Notify('Fishing ended', 'error')
 				end
 			end
 			
@@ -66,16 +67,18 @@ Citizen.CreateThread(function()
 				else
 					QBCore.Functions.Notify('The Fish Escaped!', 'error')
 					exports['textUi']:DrawTextUi('hide')
+					loseBait()
 				end
 			end
 		end
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
+
 		local wait = math.random(Config.FishingWaitTime.minTime , Config.FishingWaitTime.maxTime)
-		Citizen.Wait(wait)
+		Wait(wait)
 		if fishing then
 			pause = true
 			correct = 1
@@ -83,13 +86,13 @@ Citizen.CreateThread(function()
 			exports['textUi']:DrawTextUi('show', "Press [F] to Catch Fish!")
 			input = 0
 			pausetimer = 0
-		end	
+		end
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(500)
+		Wait(500)
 		for k = 1, #Config.PedList, 1 do
 			v = Config.PedList[k]
 			local playerCoords = GetEntityCoords(PlayerPedId())
@@ -102,7 +105,7 @@ Citizen.CreateThread(function()
 
 			if dist >= 50.0 and peds[k] then
 				for i = 255, 0, -51 do
-					Citizen.Wait(50)
+					Wait(50)
 					SetEntityAlpha(peds[k].ped, i, false)
 				end
 				DeletePed(peds[k].ped)
@@ -145,20 +148,24 @@ RegisterNetEvent('fishing:client:attemptTreasureChest', function()
 	  end, 'fishingkey')
 end)
 
+
 RegisterNetEvent('fishing:SkillBar', function(message)
 	exports['textUi']:DrawTextUi('hide')
 	if Config.Skillbar == "reload-skillbar" then
 		local finished = exports["reload-skillbar"]:taskBar(math.random(5000,7500),math.random(2,4))
 		if finished ~= 100 then
 			QBCore.Functions.Notify('The Fish Got Away!', 'error')
+			loseBait()
 		else
 			local finished2 = exports["reload-skillbar"]:taskBar(math.random(2500,5000),math.random(3,5))
 			if finished2 ~= 100 then
 				QBCore.Functions.Notify('The Fish Escaped!', 'error')
+				loseBait()
 			else
 				local finished3 = exports["reload-skillbar"]:taskBar(math.random(900,2000),math.random(5,7))
 				if finished3 ~= 100 then
 					QBCore.Functions.Notify('The Fish Got Away!', 'error')
+					loseBait()
 				else
 					catchAnimation()
 				end
@@ -168,6 +175,7 @@ RegisterNetEvent('fishing:SkillBar', function(message)
 		local finished = exports["np-skillbar"]:taskBar(1000,math.random(3,5))
 		if finished ~= 100 then
 			QBCore.Functions.Notify('The Fish Got Away!', 'error')
+			loseBait()
 		else
 			catchAnimation()
 		end
@@ -181,6 +189,7 @@ RegisterNetEvent('fishing:SkillBar', function(message)
 			catchAnimation()
 		end, function()
 			QBCore.Functions.Notify('The Fish Escaped!', 'error')
+			loseBait()
 		end)
 	end
 end) 
@@ -253,23 +262,17 @@ end)
 RegisterNetEvent('fishing:fishstart', function()
 	local playerPed = PlayerPedId()
 	local pos = GetEntityCoords(playerPed) 
-	QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
-		if IsPedSwimming(playerPed) then return QBCore.Functions.Notify("You can't be swimming and fishing at the same time.", "error") end 
-        if IsPedInAnyVehicle(playerPed) then return QBCore.Functions.Notify("You need to exit your vehicle to start fishing.", "error") end 
-		if HasItem then
-			if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z - 3.0)  then
-				local time = 2500
-				exports['progressBars']:drawBar(time, 'Using Fishing Rod')
-				Citizen.Wait(time)
-				exports['textUi']:DrawTextUi('show', "Press [X] to stop fishing at any time")
-				fishAnimation()
-			else
-				QBCore.Functions.Notify('You need to go further away from the shore', 'error')
-			end
-		else
-		  QBCore.Functions.Notify("You need bait to fish.", "error")
-		end
-	  end, 'fishbait')
+	if IsPedSwimming(playerPed) then return QBCore.Functions.Notify("You can't be swimming and fishing at the same time.", "error") end 
+	if IsPedInAnyVehicle(playerPed) then return QBCore.Functions.Notify("You need to exit your vehicle to start fishing.", "error") end 
+	if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z - 3.0)  then
+		local time = 2500
+		exports['progressBars']:drawBar(time, 'Using Fishing Rod')
+		Wait(time)
+		exports['textUi']:DrawTextUi('show', "Press [X] to stop fishing at any time")
+		fishAnimation()
+	else
+		QBCore.Functions.Notify('You need to go further away from the shore', 'error')
+	end
 end, false)
 
 RegisterNetEvent('doj:client:ReturnBoat', function(args)
@@ -474,7 +477,7 @@ RegisterNetEvent('fishing:client:anchor', function()
                 if IsThisModelABoat(vehModel) or IsThisModelAJetski(vehModel) or IsThisModelAnAmphibiousCar(vehModel) or IsThisModelAnAmphibiousQuadbike(vehModel) then
                     if IsBoatAnchoredAndFrozen(currVeh) then
                         exports['progressBars']:drawBar(2000,"Retrieving Anchor")
-                        Citizen.Wait(2000)
+                        Wait(2000)
 						QBCore.Functions.Notify('Anchor Disabled', 'primary')
                         SetBoatAnchor(currVeh, false)
                         SetBoatFrozenWhenAnchored(currVeh, false)
@@ -482,7 +485,7 @@ RegisterNetEvent('fishing:client:anchor', function()
                     elseif not IsBoatAnchoredAndFrozen(currVeh) and CanAnchorBoatHere(currVeh) and GetEntitySpeed(currVeh) < 3 then
                         SetEntityAsMissionEntity(currVeh,false,true)
                         exports['progressBars']:drawBar(2000,"Dropping Anchor")
-                        Citizen.Wait(2000)
+                        Wait(2000)
 						QBCore.Functions.Notify('Anchor Enabled', 'success')
                         SetBoatAnchor(currVeh, true)
                         SetBoatFrozenWhenAnchored(currVeh, true)
@@ -496,10 +499,35 @@ end)
 
 --============================================================== Functions
 
+loseBait = function()
+	local chance = math.random(1, 15)
+	if chance <= 5 then
+		TriggerServerEvent("fishing:server:removeFishingBait")
+		loseBaitAnimation()
+	end
+end
+
+loseBaitAnimation = function()
+	local ped = PlayerPedId()
+	local animDict = "gestures@f@standing@casual"
+	local animName = "gesture_damn"
+	DeleteEntity(rodHandle)
+	RequestAnimDict(animDict)
+	while not HasAnimDictLoaded(animDict) do
+		Wait(100)
+	end
+	TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 0, 0, 0, 48, 0)
+	RemoveAnimDict(animDict)
+	exports['textUi']:DrawTextUi('show', "Fish took your bait!")
+	Wait(2000)
+	exports['textUi']:DrawTextUi('hide')
+	fishAnimation()
+end
+
 RequestTheModel = function(model)
 	RequestModel(model)
 	while not HasModelLoaded(model) do
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end
 
@@ -510,15 +538,14 @@ catchAnimation = function()
 	DeleteEntity(rodHandle)
 	RequestAnimDict(animDict)
 	while not HasAnimDictLoaded(animDict) do
-		Citizen.Wait(100)
+		Wait(100)
 	end
 	TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 0, 0, 0, 48, 0)
-
 	local time = 1750
 	exports['progressBars']:drawBar(time, 'Fish Caught!')
-	Citizen.Wait(time)
+	Wait(time)
 	TriggerServerEvent('fishing:server:catch') 
- 
+	loseBait()
 	if math.random(1, 100) < 50 then
 		TriggerServerEvent('hud:server:RelieveStress', 50)
 	end
@@ -528,19 +555,25 @@ catchAnimation = function()
 end
 
 fishAnimation = function()
-	local ped = PlayerPedId()
-	local animDict = "amb@world_human_stand_fishing@idle_a"
-	local animName = "idle_c"
-	RequestAnimDict(animDict)
-	while not HasAnimDictLoaded(animDict) do
-		Citizen.Wait(100)
-	end
-	TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
-	fishingRodEntity()
-	fishing = true
-	Citizen.Wait(3700)
-	exports['textUi']:DrawTextUi('hide') 
-	-- RemoveAnimDict(animDict)
+	QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+		if HasItem then
+			local ped = PlayerPedId()
+			local animDict = "amb@world_human_stand_fishing@idle_a"
+			local animName = "idle_c"
+			RequestAnimDict(animDict)
+			while not HasAnimDictLoaded(animDict) do
+				Wait(100)
+			end
+			TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
+			fishingRodEntity()
+			fishing = true
+			Wait(3700)
+			exports['textUi']:DrawTextUi('hide') 
+		else
+		  endFishing()
+		  QBCore.Functions.Notify("You dont have any fishing bait", "error")
+		end
+	end, 'fishbait')
 end
 
 fishingRodEntity = function()
@@ -559,7 +592,6 @@ endFishing = function()
 		ClearPedTasks(ped)
 		fishing = false
 		rodHandle = 0
-		QBCore.Functions.Notify('You Stopped Fishing', 'error')
 		exports['textUi']:DrawTextUi('hide')
     end
 end
@@ -570,12 +602,12 @@ attemptTreasureChest = function()
 	local animName = "low_force_entry_ds"
 	RequestAnimDict(animDict)
 	while not HasAnimDictLoaded(animDict) do
-		Citizen.Wait(100)
+		Wait(100)
 	end
 	TaskPlayAnim(ped, animDict, animName, 1.0, 1.0, 1.0, 1, 0.0, 0, 0, 0)
 	RemoveAnimDict(animDict)
 	exports['progressBars']:drawBar(1500, 'Attempting to open Treasure Chest')
-	Citizen.Wait(1500)
+	Wait(1500)
 	ClearPedTasks(PlayerPedId())
 end
 
@@ -598,7 +630,7 @@ end
 nearPed = function(model, coords, heading, gender, animDict, animName, scenario)
 	RequestModel(GetHashKey(model))
 	while not HasModelLoaded(GetHashKey(model)) do
-		Citizen.Wait(1)
+		Wait(1)
 	end
 
 	if gender == 'male' then
@@ -618,7 +650,7 @@ nearPed = function(model, coords, heading, gender, animDict, animName, scenario)
 	if animDict and animName then
 		RequestAnimDict(animDict)
 		while not HasAnimDictLoaded(animDict) do
-			Citizen.Wait(1)
+			Wait(1)
 		end
 		TaskPlayAnim(ped, animDict, animName, 8.0, 0, -1, 1, 0, 0, 0)
 	end
@@ -626,7 +658,7 @@ nearPed = function(model, coords, heading, gender, animDict, animName, scenario)
 		TaskStartScenarioInPlace(ped, scenario, 0, true) 
 	end
 	for i = 0, 255, 51 do
-		Citizen.Wait(50)
+		Wait(50)
 		SetEntityAlpha(ped, i, false)
 	end
 
