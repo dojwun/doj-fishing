@@ -55,7 +55,7 @@ QBCore.Functions.CreateUseableItem("fishtacklebox", function(source, item)
     local Player = QBCore.Functions.GetPlayer(src)
 	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
 
-		TriggerClientEvent("fishing:client:progressBar",src)
+		TriggerClientEvent('QBCore:Notify', src, "Opening Tackel Box", "success")
 		Player.Functions.RemoveItem("fishtacklebox", 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['fishtacklebox'], "remove", 1)
 
