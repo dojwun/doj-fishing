@@ -297,7 +297,7 @@ RegisterNetEvent('doj:client:ReturnBoat', function(args)
 			SetEntityCoords(ped, Config.PlayerReturnLocation.ElGordo.x, Config.PlayerReturnLocation.ElGordo.y, Config.PlayerReturnLocation.ElGordo.z, 0, 0, 0, false) 
 			SetEntityHeading(ped, Config.PlayerReturnLocation.ElGordo.w)
 			TriggerServerEvent('fishing:server:returnDeposit')
-		elseif args == 3 then
+		elseif args == 4 then
 			local boat = GetVehiclePedIsIn(ped,true) 
 			QBCore.Functions.DeleteVehicle(boat)
 			SetEntityCoords(ped, Config.PlayerReturnLocation.ActDam.x, Config.PlayerReturnLocation.ActDam.y, Config.PlayerReturnLocation.ActDam.z, 0, 0, 0, false) 
@@ -349,7 +349,7 @@ RegisterNetEvent('doj:client:rentaBoat', function(args)
 					TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(boat))
 					SetVehicleEngineOn(boat, true, true)
 				end, Config.BoatSpawnLocation.ElGordo, true) 
-			elseif args == 3 then
+			elseif args == 4 then
 				QBCore.Functions.SpawnVehicle(Config.RentalBoat, function(boat)
 					SetVehicleNumberPlateText(boat, "Rent-a-Boat")
 					exports['LegacyFuel']:SetFuel(boat, 100.0)
