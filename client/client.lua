@@ -171,7 +171,7 @@ RegisterNetEvent('fishing:SkillBar', function(message)
 				end
 			end
 		end
-	elseif Config.Skillbar == "np-skillbar" then
+	elseif Config.Skillbar == "np-skillbar" then 
 		local finished = exports["np-skillbar"]:taskBar(1000,math.random(3,5))
 		if finished ~= 100 then
 			QBCore.Functions.Notify('The Fish Got Away!', 'error')
@@ -265,8 +265,8 @@ RegisterNetEvent('fishing:fishstart', function()
 	if IsPedSwimming(playerPed) then return QBCore.Functions.Notify("You can't be swimming and fishing at the same time.", "error") end 
 	if IsPedInAnyVehicle(playerPed) then return QBCore.Functions.Notify("You need to exit your vehicle to start fishing.", "error") end 
 	if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z - 3.0)  then
-		local time = 2500
-		exports['progressBars']:drawBar(time, 'Using Fishing Rod')
+		local time = 1000
+		QBCore.Functions.Notify('Using Fishing Rod', 'primary', time)
 		Wait(time)
 		exports['textUi']:DrawTextUi('show', "Press [X] to stop fishing at any time")
 		fishAnimation()
@@ -297,7 +297,7 @@ RegisterNetEvent('doj:client:ReturnBoat', function(args)
 			SetEntityCoords(ped, Config.PlayerReturnLocation.ElGordo.x, Config.PlayerReturnLocation.ElGordo.y, Config.PlayerReturnLocation.ElGordo.z, 0, 0, 0, false) 
 			SetEntityHeading(ped, Config.PlayerReturnLocation.ElGordo.w)
 			TriggerServerEvent('fishing:server:returnDeposit')
-		elseif args == 4 then
+		elseif args == 3 then
 			local boat = GetVehiclePedIsIn(ped,true) 
 			QBCore.Functions.DeleteVehicle(boat)
 			SetEntityCoords(ped, Config.PlayerReturnLocation.ActDam.x, Config.PlayerReturnLocation.ActDam.y, Config.PlayerReturnLocation.ActDam.z, 0, 0, 0, false) 
@@ -349,7 +349,7 @@ RegisterNetEvent('doj:client:rentaBoat', function(args)
 					TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(boat))
 					SetVehicleEngineOn(boat, true, true)
 				end, Config.BoatSpawnLocation.ElGordo, true) 
-			elseif args == 4 then
+			elseif args == 3 then
 				QBCore.Functions.SpawnVehicle(Config.RentalBoat, function(boat)
 					SetVehicleNumberPlateText(boat, "Rent-a-Boat")
 					exports['LegacyFuel']:SetFuel(boat, 100.0)
@@ -476,7 +476,7 @@ RegisterNetEvent('fishing:client:anchor', function()
             if DoesEntityExist(currVeh) then
                 if IsThisModelABoat(vehModel) or IsThisModelAJetski(vehModel) or IsThisModelAnAmphibiousCar(vehModel) or IsThisModelAnAmphibiousQuadbike(vehModel) then
                     if IsBoatAnchoredAndFrozen(currVeh) then
-                        exports['progressBars']:drawBar(2000,"Retrieving Anchor")
+						QBCore.Functions.Notify('Retrieving Anchor', 'success')
                         Wait(2000)
 						QBCore.Functions.Notify('Anchor Disabled', 'primary')
                         SetBoatAnchor(currVeh, false)
@@ -484,7 +484,7 @@ RegisterNetEvent('fishing:client:anchor', function()
                         SetForcedBoatLocationWhenAnchored(currVeh, false)
                     elseif not IsBoatAnchoredAndFrozen(currVeh) and CanAnchorBoatHere(currVeh) and GetEntitySpeed(currVeh) < 3 then
                         SetEntityAsMissionEntity(currVeh,false,true)
-                        exports['progressBars']:drawBar(2000,"Dropping Anchor")
+						QBCore.Functions.Notify('Dropping Anchor', 'primary')
                         Wait(2000)
 						QBCore.Functions.Notify('Anchor Enabled', 'success')
                         SetBoatAnchor(currVeh, true)
@@ -542,7 +542,7 @@ catchAnimation = function()
 	end
 	TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 0, 0, 0, 48, 0)
 	local time = 1750
-	exports['progressBars']:drawBar(time, 'Fish Caught!')
+	QBCore.Functions.Notify('Fish Caught!', 'success', time)
 	Wait(time)
 	TriggerServerEvent('fishing:server:catch') 
 	loseBait()
@@ -606,7 +606,7 @@ attemptTreasureChest = function()
 	end
 	TaskPlayAnim(ped, animDict, animName, 1.0, 1.0, 1.0, 1, 0.0, 0, 0, 0)
 	RemoveAnimDict(animDict)
-	exports['progressBars']:drawBar(1500, 'Attempting to open Treasure Chest')
+	QBCore.Functions.Notify('Attempting to open Treasure Chest', 'primary', 1500)
 	Wait(1500)
 	ClearPedTasks(PlayerPedId())
 end
