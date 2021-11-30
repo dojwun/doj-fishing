@@ -551,7 +551,7 @@ catchAnimation = function()
 	end
 	PlaySoundFrontend(-1, "OK", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
 	RemoveAnimDict(animDict)
-	fishAnimation()
+	endFishing()
 end
 
 fishAnimation = function()
