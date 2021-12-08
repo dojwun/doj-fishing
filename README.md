@@ -1,5 +1,7 @@
 # Fishing script for QB
 
+| If you are intested in recieving github updates join the community on **[Discord](https://discord.gg/NVsaunpesE)**! |
+|----|
 
 **[Source](https://github.com/Kuzkay/esx_AdvancedFishing)**
 
