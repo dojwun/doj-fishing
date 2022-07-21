@@ -89,7 +89,7 @@
 ![pearlscard](https://i.imgur.com/xFEmoLt.png)
 
 # Required
-- qb-core/shared.lua info
+- qb-core/shared/items.lua 
 ```
 	-- Regular Fish
 	['stingray'] 			     	 = {['name'] = 'stingray', 				    ['label'] = 'Stingray',            		['weight'] = 2500,      ['type'] = 'item',      ['image'] = 'stingray.png',         	['unique'] = true,     ['useable'] = false,     ['shouldClose'] = false,     ['combinable'] = nil,   ['description'] = 'Stingray'},
