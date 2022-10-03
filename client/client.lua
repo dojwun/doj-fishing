@@ -124,7 +124,7 @@ end)
 RegisterNetEvent('fishing:client:attemptTreasureChest', function()
 	local ped = PlayerPedId()
 	attemptTreasureChest()
-	QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+	local HasItem = QBCore.Functions.HasItem('fishingkey')
 		if HasItem then
 			QBCore.Functions.Progressbar("accepted_key", "Inserting Key..", (math.random(2000, 5000)), false, true, {
 				disableMovement = true,
@@ -145,7 +145,6 @@ RegisterNetEvent('fishing:client:attemptTreasureChest', function()
 		else
 		  QBCore.Functions.Notify("You dont have a key to this lock!", "error")
 		end
-	  end, 'fishingkey')
 end)
 
 
@@ -555,7 +554,7 @@ catchAnimation = function()
 end
 
 fishAnimation = function()
-	QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+	local HasItem = QBCore.Functions.HasItem('fishbait')
 		if HasItem then
 			local ped = PlayerPedId()
 			local animDict = "amb@world_human_stand_fishing@idle_a"
@@ -573,7 +572,6 @@ fishAnimation = function()
 		  endFishing()
 		  QBCore.Functions.Notify("You dont have any fishing bait", "error")
 		end
-	end, 'fishbait')
 end
 
 fishingRodEntity = function()
