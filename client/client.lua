@@ -345,7 +345,7 @@ RegisterNetEvent('doj:client:rentaBoat', function(args)
 					TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(boat))
 					SetVehicleEngineOn(boat, true, true)
 				end, Config.BoatSpawnLocation.ElGordo, true) 
-			elseif args == 3 then
+			elseif args == 4 then
 				QBCore.Functions.SpawnVehicle(Config.RentalBoat, function(boat)
 					SetVehicleNumberPlateText(boat, "Rent-a-Boat")
 					exports['LegacyFuel']:SetFuel(boat, 100.0)
