@@ -121,28 +121,27 @@ end)
 RegisterNetEvent('fishing:client:attemptTreasureChest', function()
 	local ped = PlayerPedId()
 	attemptTreasureChest()
-	QBCore.Functions.TriggerCallback('doj:server:fishingKeyCheck', function(HasItem)
-		if HasItem then 
-			QBCore.Functions.Progressbar("accepted_key", "Inserting Key..", (math.random(2000, 5000)), false, true, {
-				disableMovement = true,
-				disableCarMovement = true,
-				disableMouse = false,
-				disableCombat = true,
-			}, {
-				animDict = "mini@repair",
-				anim = "fixing_a_player",
-				flags = 16,
-			}, {}, {}, function() -- Done
-				ClearPedTasks(ped)
-				openedTreasureChest()
-			end, function() -- Cancel
-				ClearPedTasks(ped)
-				QBCore.Functions.Notify("Canceled!", "error")
-			end)
-		else
-		  QBCore.Functions.Notify("You dont have a key to this lock!", "error")
-		end
-	end)
+	local HasItem = QBCore.Functions.HasItem("fishingkey")
+	if HasItem then 
+		QBCore.Functions.Progressbar("accepted_key", "Inserting Key..", (math.random(2000, 5000)), false, true, {
+			disableMovement = true,
+			disableCarMovement = true,
+			disableMouse = false,
+			disableCombat = true,
+		}, {
+			animDict = "mini@repair",
+			anim = "fixing_a_player",
+			flags = 16,
+		}, {}, {}, function() -- Done
+			ClearPedTasks(ped)
+			openedTreasureChest()
+		end, function() -- Cancel
+			ClearPedTasks(ped)
+			QBCore.Functions.Notify("Canceled!", "error")
+		end)
+	else
+	  QBCore.Functions.Notify("You dont have a key to this lock!", "error")
+	end
 end)
 
 
@@ -552,25 +551,24 @@ catchAnimation = function()
 end
 
 fishAnimation = function()
-	QBCore.Functions.TriggerCallback('doj:server:fishingBaitCheck', function(HasItem)
-		if HasItem then
-			local ped = PlayerPedId()
-			local animDict = "amb@world_human_stand_fishing@idle_a"
-			local animName = "idle_c"
-			RequestAnimDict(animDict)
-			while not HasAnimDictLoaded(animDict) do
-				Wait(100)
-			end
-			TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
-			fishingRodEntity()
-			fishing = true
-			Wait(3700)
-			exports["qb-core"]:HideText()
-		else
-		  endFishing()
-		  QBCore.Functions.Notify("You dont have any fishing bait", "error")
+	local HasItem = QBCore.Functions.HasItem('fishbait')
+	if HasItem then
+		local ped = PlayerPedId()
+		local animDict = "amb@world_human_stand_fishing@idle_a"
+		local animName = "idle_c"
+		RequestAnimDict(animDict)
+		while not HasAnimDictLoaded(animDict) do
+			Wait(100)
 		end
-	end)
+		TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
+		fishingRodEntity()
+		fishing = true
+		Wait(3700)
+		exports["qb-core"]:HideText()
+	else
+	  endFishing()
+	  QBCore.Functions.Notify("You dont have any fishing bait", "error")
+	end
 end
 
 fishingRodEntity = function()
