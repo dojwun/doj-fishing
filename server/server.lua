@@ -374,3 +374,25 @@ QBCore.Functions.CreateCallback('fishing:server:checkMoney', function(source, cb
         cb(false)
     end
 end)
+
+QBCore.Functions.CreateCallback('doj:server:fishingKeyCheck', function(source, cb)
+    local Player = QBCore.Functions.GetPlayer(source)
+    local Item = Player.Functions.GetItemByName("fishingkey")
+
+    if Item ~= nil then 
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
+QBCore.Functions.CreateCallback('doj:server:fishingBaitCheck', function(source, cb)
+    local Player = QBCore.Functions.GetPlayer(source)
+    local Item = Player.Functions.GetItemByName("fishbait")
+
+    if Item ~= nil then 
+        cb(true)
+    else
+        cb(false)
+    end
+end)
