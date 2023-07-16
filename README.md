@@ -33,7 +33,6 @@
 
 
 # Dependencies
-**[textUi](https://github.com/dojwun/textUi)**
 
 **[qb-menu](https://github.com/qbcore-framework/qb-menu)**
 
